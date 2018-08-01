@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', function () {
+    return 'Hello AMT about page';
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
