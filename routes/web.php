@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return 'Hello AMT about page';
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
