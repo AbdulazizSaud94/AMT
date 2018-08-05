@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return 'Hello AMT about page';
+    return view('pages.about');
 });
 
 Auth::routes();
