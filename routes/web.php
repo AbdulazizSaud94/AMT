@@ -13,9 +13,7 @@
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/about', function () {
-    return view('pages.about');
-});
+Route::get('/about', 'PagesController@about');
 
 Auth::routes();
 
