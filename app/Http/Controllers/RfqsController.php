@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RfqController extends Controller
+class RfqsController extends Controller
 {
     /**
      * Display a listing of the resource.
