@@ -11,14 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@index');
 
-Route::get('/about', function () {
-    return 'Hello AMT about page';
-});
+Route::get('/about', 'PagesController@about');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('rfqs', 'RfqsController');
