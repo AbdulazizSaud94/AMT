@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Rfq;  //to use Rfq model and eloquent for database
-// use DB; Basic SQL commands
-
-class RfqsController extends Controller
+class DocumentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +13,7 @@ class RfqsController extends Controller
      */
     public function index()
     {
-        // $rfqs = Rfq::all();
-        $rfqs = Rfq::orderBy('created_at', 'desc')->get();
-        return view('rfqs.index')->with('rfqs', $rfqs);
+        //
     }
 
     /**
@@ -50,9 +45,7 @@ class RfqsController extends Controller
      */
     public function show($id)
     {
-        $rfq = Rfq::find($id);
-        return view('rfqs.show')->with('rfq', $rfq);
-
+        //
     }
 
     /**
