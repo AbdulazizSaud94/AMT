@@ -30,3 +30,7 @@ Route::resource('documents', 'DocumentsController');
 Route::resource('systems', 'SystemsController');
 
 Route::resource('workscopes', 'WorkscopesController');
+
+Route::resource('devisions', 'DevisionsController');
+
+Route::resource('competitors', 'CompetitorsController');
