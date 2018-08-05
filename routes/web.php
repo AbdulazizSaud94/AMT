@@ -20,3 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('rfqs', 'RfqsController');
+
+Route::resource('projects', 'ProjectsController');
+
+Route::resource('clients', 'ClientsController');
+
+Route::resource('documents', 'DocumentsController');
+
+Route::resource('systems', 'SystemsController');
+
+Route::resource('workscopes', 'WorkscopesController');
