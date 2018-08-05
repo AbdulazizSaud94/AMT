@@ -49,7 +49,7 @@ class RfqsController extends Controller
      */
     public function show($id)
     {
-        //
+        return Rfq::find($id);
     }
 
     /**
