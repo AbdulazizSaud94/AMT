@@ -12,4 +12,7 @@
   @else
     <p>No available Clients</p>
   @endif
+
+  <br>
+  <a href="/laravel/AMT/public/clients/create" class="btn btn-secondary">Add client</a>
 @endsection

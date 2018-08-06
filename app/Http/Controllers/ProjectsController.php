@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Project; 
+use App\Project;
 
 class ProjectsController extends Controller
 {
@@ -62,7 +62,8 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        //
+      $project = Project::find($id);
+      return view('projects.show')->with('project', $project);
     }
 
     /**
@@ -73,7 +74,8 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $project = Project::find($id);
+      return view('projects.edit')->with('project', $project);
     }
 
     /**
@@ -85,7 +87,20 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+          'name' => 'required',
+          'location' => 'required',
+          'type' => 'required'
+      ]);
+
+      // update new project
+      $project = Project::find($id);
+      $project->name = $request->input('name');
+      $project->location = $request->input('location');
+      $project->type = $request->input('type');
+      $project->save();
+
+      return redirect('/projects')->with('success', 'Project Updated');
     }
 
     /**
@@ -96,6 +111,8 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $project = Project::find($id);
+      $project->delete();
+      return redirect('/projects')->with('success', 'Project Deleted');
     }
 }
