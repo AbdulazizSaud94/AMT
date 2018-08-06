@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Client; 
+
 class ClientsController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        //
+      $clients = Client::all();
+      // $rfqs = Rfq::orderBy('created_at', 'desc')->get();
+      return view('clients.index')->with('clients', $clients);
     }
 
     /**

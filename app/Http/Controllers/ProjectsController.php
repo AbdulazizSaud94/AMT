@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Project; 
+
 class ProjectsController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        //
+      $projects = Project::all();
+
+      return view('projects.index')->with('projects', $projects);
     }
 
     /**
@@ -23,7 +27,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -34,7 +38,20 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+          'name' => 'required',
+          'location' => 'required',
+          'type' => 'required'
+      ]);
+
+      // crete new project
+      $project = new Project;
+      $project->name = $request->input('name');
+      $project->location = $request->input('location');
+      $project->type = $request->input('type');
+      $project->save();
+
+      return redirect('/projects')->with('success', 'Project Added');
     }
 
     /**
