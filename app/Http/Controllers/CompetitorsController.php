@@ -43,8 +43,8 @@ class CompetitorsController extends Controller
           'description' => 'required'
       ]);
 
-      // crete new system
-      $competitor = new System;
+      // crete new competitor
+      $competitor = new Competitor;
       $competitor->name = $request->input('name');
       $competitor->description = $request->input('description');
       $competitor->save();
