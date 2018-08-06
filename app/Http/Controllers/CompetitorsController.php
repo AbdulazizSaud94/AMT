@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Workscope;
+use App\Competitor;
 
-class WorkscopesController extends Controller
+class CompetitorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class WorkscopesController extends Controller
      */
     public function index()
     {
-      $workscopes = Workscope::all();
+      $competitors = Competitor::all();
       // $rfqs = Rfq::orderBy('created_at', 'desc')->get();
-      return view('workscopes.index')->with('workscopes', $workscopes);
+      return view('competitors.index')->with('competitors', $competitors);
     }
 
     /**
@@ -27,7 +27,7 @@ class WorkscopesController extends Controller
      */
     public function create()
     {
-        return view('workscopes.create');
+        return view('competitors.create');
     }
 
     /**
@@ -39,17 +39,17 @@ class WorkscopesController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-          'title' => 'required',
+          'name' => 'required',
           'description' => 'required'
       ]);
 
-      // crete new workscope
-      $workscope = new Workscope;
-      $workscope->title = $request->input('title');
-      $workscope->description = $request->input('description');
-      $workscope->save();
+      // crete new competitor
+      $competitor = new Competitor;
+      $competitor->name = $request->input('name');
+      $competitor->description = $request->input('description');
+      $competitor->save();
 
-      return redirect('/workscopes')->with('success', 'Workscope Added');
+      return redirect('/competitors')->with('success', 'Competitor Added');
     }
 
     /**
@@ -60,8 +60,8 @@ class WorkscopesController extends Controller
      */
     public function show($id)
     {
-      $workscope = Workscope::find($id);
-      return view('workscopes.show')->with('workscope', $workscope);
+      $competitor = Competitor::find($id);
+      return view('competitors.show')->with('competitor', $competitor);
     }
 
     /**
@@ -72,8 +72,8 @@ class WorkscopesController extends Controller
      */
     public function edit($id)
     {
-      $workscope = Workscope::find($id);
-      return view('workscopes.edit')->with('workscope', $workscope);
+      $competitor = Competitor::find($id);
+      return view('competitors.edit')->with('competitor', $competitor);
     }
 
     /**
@@ -86,17 +86,17 @@ class WorkscopesController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-          'title' => 'required',
+          'name' => 'required',
           'description' => 'required'
       ]);
 
-      // update workscope
-      Workscope::find($id);
-      $workscope->title = $request->input('title');
-      $workscope->description = $request->input('description');
-      $workscope->save();
+      // update system
+      Competitor::find($id);
+      $competitor->name = $request->input('name');
+      $competitor->description = $request->input('description');
+      $competitor->save();
 
-      return redirect('/workscopes')->with('success', 'Workscope Added');
+      return redirect('/competitors')->with('success', 'Competitor Added');
     }
 
     /**
@@ -107,8 +107,8 @@ class WorkscopesController extends Controller
      */
     public function destroy($id)
     {
-      $workscope = Workscope::find($id);
-      $workscope->delete();
-      return redirect('/workscopes')->with('success', 'Workscope Deleted');
+      $competitor = Competitor::find($id);
+      $competitor->delete();
+      return redirect('/competitors')->with('success', 'Competitor Deleted');
     }
 }

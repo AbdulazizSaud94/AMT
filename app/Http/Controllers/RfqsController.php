@@ -28,7 +28,7 @@ class RfqsController extends Controller
      */
     public function create()
     {
-        //
+        return view('rfqs.create');
     }
 
     /**
@@ -86,6 +86,8 @@ class RfqsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $rfq = Rfq::find($id);
+      $rfq->delete();
+      return redirect('/rfqs')->with('success', 'RFQ Deleted');
     }
 }

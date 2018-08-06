@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Workscope;
+use App\Devision;
 
-class WorkscopesController extends Controller
+class DevisionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class WorkscopesController extends Controller
      */
     public function index()
     {
-      $workscopes = Workscope::all();
+      $devisions = Devision::all();
       // $rfqs = Rfq::orderBy('created_at', 'desc')->get();
-      return view('workscopes.index')->with('workscopes', $workscopes);
+      return view('devisions.index')->with('devisions', $devisions);
     }
 
     /**
@@ -27,7 +27,7 @@ class WorkscopesController extends Controller
      */
     public function create()
     {
-        return view('workscopes.create');
+        return view('devisions.create');
     }
 
     /**
@@ -39,17 +39,17 @@ class WorkscopesController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-          'title' => 'required',
+          'name' => 'required',
           'description' => 'required'
       ]);
 
-      // crete new workscope
-      $workscope = new Workscope;
-      $workscope->title = $request->input('title');
-      $workscope->description = $request->input('description');
-      $workscope->save();
+      // crete new devision
+      $devision = new Devision;
+      $devision->name = $request->input('name');
+      $devision->description = $request->input('description');
+      $devision->save();
 
-      return redirect('/workscopes')->with('success', 'Workscope Added');
+      return redirect('/devisions')->with('success', 'Devision Added');
     }
 
     /**
@@ -60,8 +60,8 @@ class WorkscopesController extends Controller
      */
     public function show($id)
     {
-      $workscope = Workscope::find($id);
-      return view('workscopes.show')->with('workscope', $workscope);
+      $devision = Devision::find($id);
+      return view('devisions.show')->with('devision', $devision);
     }
 
     /**
@@ -72,8 +72,8 @@ class WorkscopesController extends Controller
      */
     public function edit($id)
     {
-      $workscope = Workscope::find($id);
-      return view('workscopes.edit')->with('workscope', $workscope);
+      $devision = Devision::find($id);
+      return view('devisions.edit')->with('devision', $devision);
     }
 
     /**
@@ -86,17 +86,17 @@ class WorkscopesController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-          'title' => 'required',
+          'name' => 'required',
           'description' => 'required'
       ]);
 
-      // update workscope
-      Workscope::find($id);
-      $workscope->title = $request->input('title');
-      $workscope->description = $request->input('description');
-      $workscope->save();
+      // update devision
+      Devision::find($id);
+      $devision->name = $request->input('name');
+      $devision->description = $request->input('description');
+      $devision->save();
 
-      return redirect('/workscopes')->with('success', 'Workscope Added');
+      return redirect('/devisions')->with('success', 'Devision Added');
     }
 
     /**
@@ -107,8 +107,8 @@ class WorkscopesController extends Controller
      */
     public function destroy($id)
     {
-      $workscope = Workscope::find($id);
-      $workscope->delete();
-      return redirect('/workscopes')->with('success', 'Workscope Deleted');
+      $devision = Devision::find($id);
+      $devision->delete();
+      return redirect('/devisions')->with('success', 'Devision Deleted');
     }
 }
