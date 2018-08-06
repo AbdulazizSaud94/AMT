@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Workscope;
+
 class WorkscopesController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class WorkscopesController extends Controller
      */
     public function index()
     {
-        //
+      $workscopes = Workscope::all();
+      // $rfqs = Rfq::orderBy('created_at', 'desc')->get();
+      return view('workscopes.index')->with('workscopes', $workscopes);
     }
 
     /**
@@ -23,7 +27,7 @@ class WorkscopesController extends Controller
      */
     public function create()
     {
-        //
+        return view('workscopes.create');
     }
 
     /**
@@ -34,7 +38,18 @@ class WorkscopesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+          'title' => 'required',
+          'description' => 'required'
+      ]);
+
+      // crete new workscope
+      $workscope = new Workscope;
+      $workscope->title = $request->input('title');
+      $workscope->description = $request->input('description');
+      $workscope->save();
+
+      return redirect('/workscopes')->with('success', 'Workscope Added');
     }
 
     /**
@@ -45,7 +60,8 @@ class WorkscopesController extends Controller
      */
     public function show($id)
     {
-        //
+      $workscope = Workscope::find($id);
+      return view('workscopes.show')->with('workscope', $workscope);
     }
 
     /**
@@ -56,7 +72,8 @@ class WorkscopesController extends Controller
      */
     public function edit($id)
     {
-        //
+      $workscope = Workscope::find($id);
+      return view('workscopes.edit')->with('workscope', $workscope);
     }
 
     /**
@@ -68,7 +85,18 @@ class WorkscopesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+          'title' => 'required',
+          'description' => 'required'
+      ]);
+
+      // update workscope
+      Workscope::find($id);
+      $workscope->title = $request->input('title');
+      $workscope->description = $request->input('description');
+      $workscope->save();
+
+      return redirect('/workscopes')->with('success', 'Workscope Added');
     }
 
     /**
@@ -79,6 +107,8 @@ class WorkscopesController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $workscope = Workscope::find($id);
+      $workscope->delete();
+      return redirect('/workscopes')->with('success', 'Workscope Deleted');
     }
 }

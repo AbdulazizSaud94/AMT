@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\System;
+
 class SystemsController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class SystemsController extends Controller
      */
     public function index()
     {
-        //
+      $systems = System::all();
+      // $rfqs = Rfq::orderBy('created_at', 'desc')->get();
+      return view('systems.index')->with('systems', $systems);
     }
 
     /**
@@ -23,7 +27,7 @@ class SystemsController extends Controller
      */
     public function create()
     {
-        //
+        return view('systems.create');
     }
 
     /**
@@ -34,7 +38,18 @@ class SystemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+          'name' => 'required',
+          'description' => 'required'
+      ]);
+
+      // crete new system
+      $system = new System;
+      $system->name = $request->input('name');
+      $system->description = $request->input('description');
+      $system->save();
+
+      return redirect('/systems')->with('success', 'System Added');
     }
 
     /**
@@ -45,7 +60,8 @@ class SystemsController extends Controller
      */
     public function show($id)
     {
-        //
+      $system = System::find($id);
+      return view('systems.show')->with('system', $system);
     }
 
     /**
@@ -56,7 +72,8 @@ class SystemsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $system = System::find($id);
+      return view('systems.edit')->with('system', $system);
     }
 
     /**
@@ -68,7 +85,18 @@ class SystemsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+          'name' => 'required',
+          'description' => 'required'
+      ]);
+
+      // update system
+      System::find($id);
+      $system->name = $request->input('name');
+      $system->description = $request->input('description');
+      $system->save();
+
+      return redirect('/systems')->with('success', 'System Updated');
     }
 
     /**
@@ -79,6 +107,8 @@ class SystemsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $system = System::find($id);
+      $system->delete();
+      return redirect('/systems')->with('success', 'System Deleted');
     }
 }
