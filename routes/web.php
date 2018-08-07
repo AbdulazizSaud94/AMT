@@ -34,3 +34,6 @@ Route::resource('workscopes', 'WorkscopesController');
 Route::resource('devisions', 'DevisionsController');
 
 Route::resource('competitors', 'CompetitorsController');
+
+Route::get('/manageusers','UserControllers@index');
+Route::get('/manageusers', 'UserController@getUsers');

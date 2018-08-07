@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card w-100">
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
@@ -13,8 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <p>You're logged in</p>
                 </div>
             </div>
         </div>
