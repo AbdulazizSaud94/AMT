@@ -22,12 +22,7 @@ class UserController extends Controller
 
     public function index(){
         view('manageusers');
-    }   
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    }
     public function edit($id){
 
     }
