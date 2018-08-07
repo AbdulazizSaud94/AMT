@@ -24,7 +24,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -38,7 +37,23 @@
                                 @endif
                             </div>
                         </div>
-
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+                            <div class="col-md-6">
+                                <input id="phone" type="text" value="05" class="form-control" name="phone" required>
+                                @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Job Title') }}</label>
+                            <div class="col-md-6">
+                                <input id="title" type="text" class="form-control" name="title" required>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -52,7 +67,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
@@ -60,7 +74,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
