@@ -21,7 +21,6 @@
                             <th>Phone</th>
                             <th>Title</th>
                             <th>Edit</th>
-                            <th>Block</th>
                             <th>Delete</th>
                         </tr>
                         @foreach($users as $user)
@@ -31,11 +30,6 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->phone}}</td>
                             <td>{{$user->title}}</td>
-                            <td>
-                                <form>
-                                    <button class="btn btn-primary" onclick="window.location = 'manageusers/{{$user->id}}/block'">Block</button>
-                                </form>
-                            </td>
                             <td><button class="btn btn-success" onclick="window.location = 'manageusers/{{$user->id}}/edit'">Edit</button></td>
                             <td>
                                 <form action="{{ url("/manageusers/delete/$user->id") }}" method="POST">
