@@ -10,7 +10,7 @@
     @foreach($projects as $project)
       <div class="card card-block bg-faded">
         <h3><a href="/laravel/AMT/public/projects/{{$project->id}}">{{$project->name}}</a></h3>
-        <small>Project type: {{$project->created_at}}</small>
+        <small>Project type: {{$project->type}}</small>
       </div>
     @endforeach
 
