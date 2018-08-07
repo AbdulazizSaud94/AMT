@@ -3,18 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">AMT - Manage Users</div>
-
-                <div class="card-body">
+                <div class="card-header">
+                    <h5>Users in the system</h5>
+                </div>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <h4>Users in the system</h4>
                     <table class="table">
                         <tr>
                             <th>ID</th>
@@ -43,13 +41,12 @@
                                 <form action="{{ url("/manageusers/delete/$user->id") }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button type="submit">delete</button>
+                                    <button type="submit" class="btn btn-danger">delete</button>
                                 </form>
                             </td>
                         </tr>
                         @endforeach
                     </table>
-                </div>
             </div>
         </div>
     </div>
