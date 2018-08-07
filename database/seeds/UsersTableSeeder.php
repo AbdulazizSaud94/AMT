@@ -13,26 +13,26 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-//        $role_super_admin = Role::where('name','super admin')->first();
-//        $superAdmin = new User();
-//        $superAdmin->name = 'super admin';
-//        $superAdmin->email = 'superadmin@admin.com';
-//        $superAdmin->phone = '1324123412';
-//        $superAdmin->password = Hash::make('ProtectUs-123');
-//        $superAdmin->title = 'SuperAdmin';
-//        $superAdmin->save();
-//        $superAdmin->roles()->attach($role_super_admin);
+       $role_super_admin = Role::where('name','super admin')->first();
+       $superAdmin = new User();
+       $superAdmin->name = 'super admin';
+       $superAdmin->email = 'superadmin@admin.com';
+       $superAdmin->phone = '1324123412';
+       $superAdmin->password = Hash::make('ProtectUs-123');
+       $superAdmin->title = 'SuperAdmin';
+       $superAdmin->save();
+       $superAdmin->roles()->attach($role_super_admin);
 
 
-//        $role_sales_manger = Role::where('name','sales manger')->first();
-//        $salesManger = new User();
-//        $salesManger->name = 'sales manger';
-//        $salesManger->email = 'salesmanger@user.com';
-//        $salesManger->phone = '0501010101';
-//        $salesManger->password = Hash::make('ProtectUs-123');
-//        $salesManger->title = 'Sales Manger';
-//        $salesManger->save();
-//        $salesManger->roles()->attach($role_sales_manger);
+       $role_sales_manger = Role::where('name','sales manger')->first();
+       $salesManger = new User();
+       $salesManger->name = 'sales manger';
+       $salesManger->email = 'salesmanger@user.com';
+       $salesManger->phone = '0501010101';
+       $salesManger->password = Hash::make('ProtectUs-123');
+       $salesManger->title = 'Sales Manger';
+       $salesManger->save();
+       $salesManger->roles()->attach($role_sales_manger);
 
         $role_general_manger = Role::where('name','general manger')->first();
         $generalManger = new User();
