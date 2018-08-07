@@ -28,24 +28,20 @@ class User extends Authenticatable
     ];
 
     public function roles(){
-        return $this->belongsToMany('App\User', 'user_role','user_id', 'role_id');
+        return $this->belongsToMany('App\User', 'user_role');
     }
 
     public function hasAnyRole($roles)
     {
-        if(is_array($roles))
-            foreach ($roles as $role)
-                if($this->hasRole($role))
-                    return true;
-        else{
-            if($this->hasRole($roles))
+        foreach ($roles as $role)
+            if($this->hasRole($role))
                 return true;
-        }
         return false;
     }
 
     public function hasRole($role){
-        if($this->roles()->where('name',$role)->first())
+        $test = $this->roles()->where('name',$role)->first();
+        if($test)
             return true;
         else
             return false;

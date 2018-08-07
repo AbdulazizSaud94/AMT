@@ -21,8 +21,8 @@ Route::get('/about', function () {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::view('/manageusers','manageusers');
+Route::get('/','HomeController@index');
+Route::get('/manageusers','UserControllers@index');
 Route::get('/manageusers', 'UserController@getUsers');
 //Route::post('/manageusers/block/{{user->id}}','UserController@block');
 //Route::post('/manageusers/edit/{{user->id}}','UserController@edit');
