@@ -16,8 +16,15 @@ class CreateRfqsTable extends Migration
         Schema::create('rfqs', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('title');
-            $table->mediumText('body');
+            $table->string('ref');
+            $table->integer('created_by');
+            $table->integer('client_id');
+            $table->string('status');
+            $table->string('revision');
+            $table->string('holder');
+            $table->double('margin');
+
+
 
         });
     }
