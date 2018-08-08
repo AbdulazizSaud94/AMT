@@ -15,7 +15,9 @@ class DocumentsController extends Controller
      */
     public function index()
     {
-        //
+      $documents = Document::all();
+      // $rfqs = Rfq::orderBy('created_at', 'desc')->get();
+      return view('documents.index')->with('documents', $documents);
     }
 
     /**
@@ -25,7 +27,7 @@ class DocumentsController extends Controller
      */
     public function create()
     {
-        //
+          return view('documents.create');
     }
 
     /**
@@ -36,7 +38,43 @@ class DocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+          'title' => 'required',
+          'description' => 'required',
+          'file' => 'required|mimes:pdf,docx,xlsx|max:1999'
+      ]);
+
+      // Handle file upload
+      if ($request->hasFile('file')){
+        // file name with extention
+        $filenameWithExt = $request->file('file')->getClientOriginalName();
+
+        // only file name
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+        // only file extention
+        $extention = $request->file('file')->getClientOriginalExtension();
+
+        // file name to Store
+        $fileNameToStore = $filename.'_'.time().'.'.$extention;
+
+        // upload file
+        $path = $request->file('file')->storeAs('public/files', $fileNameToStore);
+      }
+      else {
+        $fileNameToStore = 'nofile.jpg';
+      }
+
+      // add new document
+      $document = new Document;
+      $document->title = $request->input('title');
+      $document->description = $request->input('description');
+      $document->file = $fileNameToStore;
+      $document->type = $extention;
+      $document->created_by = auth()->user()->id; // add current user id to the document
+      $document->save();
+
+      return redirect('/documents')->with('success', 'Document Added');
     }
 
     /**

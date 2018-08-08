@@ -49,6 +49,7 @@ class ProjectsController extends Controller
       $project->name = $request->input('name');
       $project->location = $request->input('location');
       $project->type = $request->input('type');
+      $project->created_by = auth()->user()->id; // add current user id to the project
       $project->save();
 
       return redirect('/projects')->with('success', 'Project Added');
