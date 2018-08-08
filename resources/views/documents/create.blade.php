@@ -4,7 +4,7 @@
 
   <h1 class = "mt-5">Add a Document</h1>
 
-  {!! Form::open(['action' => 'DocumentsController@store', 'method' => 'POST', 'enctype' => 'multipart/data']) !!}
+  {!! Form::open(['action' => 'DocumentsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
     <div class="form-group">
       {{Form::label('title', 'document Title')}}

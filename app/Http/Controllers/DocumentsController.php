@@ -41,13 +41,13 @@ class DocumentsController extends Controller
       $this->validate($request, [
           'title' => 'required',
           'description' => 'required',
-          'file' => 'required|max:1999|mimes:pdf,docx,xlsx'
+          'file' => 'required|mimes:pdf,docx,xlsx|max:1999'
       ]);
 
       // Handle file upload
       if ($request->hasFile('file')){
         // file name with extention
-        $filenameWithExt = $request->file('file')->getClientOriginalImage();
+        $filenameWithExt = $request->file('file')->getClientOriginalName();
 
         // only file name
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -66,7 +66,7 @@ class DocumentsController extends Controller
       }
 
       // add new document
-      $document = new Project;
+      $document = new Document;
       $document->title = $request->input('title');
       $document->description = $request->input('description');
       $document->file = $fileNameToStore;
@@ -74,7 +74,7 @@ class DocumentsController extends Controller
       $document->created_by = auth()->user()->id; // add current user id to the document
       $document->save();
 
-      return redirect('/documents')->with('success', 'Project Added');
+      return redirect('/documents')->with('success', 'Document Added');
     }
 
     /**
