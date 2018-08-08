@@ -14,6 +14,6 @@ class Project extends Model
   public $timestamps = true;
 
   public function user(){
-    return $this->belongTo('App\User');
+    return $this->belongsTo('App\User');
   }
 }

@@ -15,7 +15,9 @@ class DocumentsController extends Controller
      */
     public function index()
     {
-        //
+      $documents = Document::all();
+      // $rfqs = Rfq::orderBy('created_at', 'desc')->get();
+      return view('documents.index')->with('documents', $documents);
     }
 
     /**
@@ -25,7 +27,7 @@ class DocumentsController extends Controller
      */
     public function create()
     {
-        //
+          return view('documents.create');
     }
 
     /**
@@ -36,7 +38,42 @@ class DocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+          'title' => 'required',
+          'description' => 'required',
+          'file' => 'required|max:1999|mimes:pdf,docx,xlsx'
+      ]);
+
+      // Handle file upload
+      if ($request->hasFile){
+        // file name with extention
+        $filenameWithExt = $request->file('file')->getClientOriginalImage();
+
+        // only file name
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+        // only file extention
+        $extention = $request->file('file')->getClientOriginalExtention();
+
+        // file name to Store
+        $fileNameToStore = $filename.'_'.time().'.'.$extention;
+
+        // upload file
+        $path = $request->file('file')->storeAs('public/files', $fileNameToStore);
+      }
+      else {
+        $fileNameToStore = 'nofile.jpg';
+      }
+
+      // add new document
+      $project = new Project;
+      $project->name = $request->input('name');
+      $project->location = $request->input('location');
+      $project->type = $request->input('type');
+      $project->created_by = auth()->user()->id; // add current user id to the project
+      $project->save();
+
+      return redirect('/projects')->with('success', 'Project Added');
     }
 
     /**
