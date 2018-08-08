@@ -45,7 +45,7 @@ class DocumentsController extends Controller
       ]);
 
       // Handle file upload
-      if ($request->hasFile){
+      if ($request->hasFile('file')){
         // file name with extention
         $filenameWithExt = $request->file('file')->getClientOriginalImage();
 
@@ -53,7 +53,7 @@ class DocumentsController extends Controller
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
 
         // only file extention
-        $extention = $request->file('file')->getClientOriginalExtention();
+        $extention = $request->file('file')->getClientOriginalExtension();
 
         // file name to Store
         $fileNameToStore = $filename.'_'.time().'.'.$extention;
@@ -66,14 +66,15 @@ class DocumentsController extends Controller
       }
 
       // add new document
-      $project = new Project;
-      $project->name = $request->input('name');
-      $project->location = $request->input('location');
-      $project->type = $request->input('type');
-      $project->created_by = auth()->user()->id; // add current user id to the project
-      $project->save();
+      $document = new Project;
+      $document->title = $request->input('title');
+      $document->description = $request->input('description');
+      $document->file = $fileNameToStore;
+      $document->type = $extention;
+      $document->created_by = auth()->user()->id; // add current user id to the document
+      $document->save();
 
-      return redirect('/projects')->with('success', 'Project Added');
+      return redirect('/documents')->with('success', 'Project Added');
     }
 
     /**
