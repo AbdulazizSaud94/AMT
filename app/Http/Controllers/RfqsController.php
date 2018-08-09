@@ -9,6 +9,13 @@ use App\Rfq;  //to use Rfq model and eloquent for database
 
 class RfqsController extends Controller
 {
+
+  // Access control using middleware
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
     /**
      * Display a listing of the resource.
      *
