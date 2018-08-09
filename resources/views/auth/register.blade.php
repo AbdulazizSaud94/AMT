@@ -3,14 +3,41 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
+                        <div class="form-group row">
+                            <table class="table text-center">
+                                <tr>
+                                    <th colspan=8>User Role</th>
+                                </tr>
+                                <tr>
+                                    <th>Super Admin</th>
+                                    <th>Admin</th>
+                                    <th>General Manger</th>
+                                    <th>Sales Manger</th>
+                                    <th>Pre-sales Manger</th>
+                                    <th>Sales Engineer</th>
+                                    <th>Pre-sales Engineer</th>
+                                    <th>Customer</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" name="super-admin" value="super admin"></td>
+                                    <td><input type="checkbox" name="admin" value="admin"></td>
+                                    <td><input type="checkbox" name="general-manger" value="general manger"></td>
+                                    <td><input type="checkbox" name="sales-manger" value="sales manger"></td>
+                                    <td><input type="checkbox" name="pre-sales-manger" value="pre-sales manger"></td>
+                                    <td><input type="checkbox" name="sales-engineer" value="sales engineer"></td>
+                                    <td><input type="checkbox" name="pre-sales-engineer" value="pre-sales engineer"></td>
+                                    <td><input type="checkbox" name="customer" value="customer"></td>
+                                </tr>
+                            </table>
 
+                        </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
