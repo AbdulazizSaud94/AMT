@@ -8,6 +8,7 @@
       <div class="card card-block bg-faded">
         <p>Location: {{$project->location}}</p>
         <p>Type: {{$project->type}}</p>
+        <p>By: {{$project->user->name}}</p>
       </div>
 
 
