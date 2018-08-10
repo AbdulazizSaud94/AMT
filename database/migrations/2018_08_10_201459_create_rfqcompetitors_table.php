@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRfqsyscopeTable extends Migration
+class CreateRfqcompetitorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateRfqsyscopeTable extends Migration
      */
     public function up()
     {
-        Schema::create('rfq_workscope', function (Blueprint $table) {
+        Schema::create('rfq_competitor', function (Blueprint $table) {
           $table->integer('rfq_id')->unsigned();
-          $table->integer('workscope_id')->unsigned();
+          $table->integer('competitor_id')->unsigned();
 
-          $table->unique(['rfq_id', 'workscope_id']);
+          $table->unique(['rfq_id', 'competitor_id']);
           $table->foreign('rfq_id')->references('id')->on('rfqs')
               ->onDelete('cascade')->onUpdate('cascade');
-          $table->foreign('workscope_id')->references('id')->on('workscopes')
+          $table->foreign('competitor_id')->references('id')->on('competitors')
               ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -32,6 +32,6 @@ class CreateRfqsyscopeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rfq_workscope');
+        Schema::dropIfExists('rfq_competitor');
     }
 }
