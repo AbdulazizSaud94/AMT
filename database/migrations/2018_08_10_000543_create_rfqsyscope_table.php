@@ -14,8 +14,14 @@ class CreateRfqsyscopeTable extends Migration
     public function up()
     {
         Schema::create('rfq_scope', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+          $table->integer('rfq_id')->unsigned();
+          $table->integer('scope_id')->unsigned();
+
+          $table->unique(['rfq_id', 'scope_id']);
+          $table->foreign('rfq_id')->references('id')->on('rfqs')
+              ->onDelete('cascade')->onUpdate('cascade');
+          $table->foreign('scope_id')->references('id')->on('scopes')
+              ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

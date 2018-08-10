@@ -14,8 +14,14 @@ class CreateRfqdevisionTable extends Migration
     public function up()
     {
         Schema::create('rfq_devision', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+          $table->integer('rfq_id')->unsigned();
+          $table->integer('devision_id')->unsigned();
+
+          $table->unique(['rfq_id', 'devision_id']);
+          $table->foreign('rfq_id')->references('id')->on('rfqs')
+              ->onDelete('cascade')->onUpdate('cascade');
+          $table->foreign('devision_id')->references('id')->on('devisions')
+              ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
