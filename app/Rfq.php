@@ -22,22 +22,22 @@ class Rfq extends Model
   }
 
   public function systems(){
-    return $this->belongsToMany('App\System');
+    return $this->belongsToMany('App\System', 'rfq_system');
   }
 
   public function documents(){
-    return $this->belongsToMany('App\Document');
+    return $this->belongsToMany('App\Document', 'rfq_document');
   }
 
   public function workscopes(){
-    return $this->belongsToMany('App\Workscope');
+    return $this->belongsToMany('App\Workscope', 'rfq_workscope');
   }
 
   public function devisions(){
-    return $this->belongsToMany('App\Devision');
+    return $this->belongsToMany('App\Devision', 'rfq_devision');
   }
 
   public function competitors(){
-    return $this->belongsToMany('App\Competitor');
+    return $this->belongsToMany('App\Competitor', 'rfq_competitor');
   }
 }
