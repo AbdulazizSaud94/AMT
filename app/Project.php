@@ -16,8 +16,4 @@ class Project extends Model
   public function user(){
     return $this->belongsTo('App\User');
   }
-
-  public function rfqs(){
-    return $this->belongsToMany('App\Rfq');
-  }
 }
