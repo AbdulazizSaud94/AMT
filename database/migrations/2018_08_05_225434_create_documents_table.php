@@ -20,6 +20,7 @@ class CreateDocumentsTable extends Migration
             $table->mediumText('description');
             $table->string('type');
             $table->string('file');
+            $table->string('user_id');
         });
     }
 

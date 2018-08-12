@@ -6,7 +6,7 @@
       <h1 class = "mt-5">{{$rfq->title}}</h1>
 
       <div class="card card-block bg-faded">
-        <p>{{$rfq->body}}</p>
+        <p></p>
       </div>
 
       <small>Written on {{$rfq->created_at}}</small>

@@ -19,6 +19,8 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->string('location');
             $table->string('type');
+            $table->string('user_id');
+            
         });
     }
 

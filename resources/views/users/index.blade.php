@@ -3,18 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">AMT - Manage Users</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <h4>Users in the system</h4>
+                <div class="card-header">
+                    <h5>Users in the system</h5>
+                </div>
                     <table class="table">
                         <tr>
                             <th>ID</th>
@@ -23,7 +16,6 @@
                             <th>Phone</th>
                             <th>Title</th>
                             <th>Edit</th>
-                            <th>Block</th>
                             <th>Delete</th>
                         </tr>
                         @foreach($users as $user)
@@ -34,21 +26,19 @@
                             <td>{{$user->phone}}</td>
                             <td>{{$user->title}}</td>
                             <td>
-                                <form>
-                                    <button class="btn btn-primary" onclick="window.location = 'manageusers/{{$user->id}}/block'">Block</button>
-                                </form>
+                                <button type="submit" class="btn btn-success" onclick="window.location = '/users/{{$user->id}}/edit'">Edit</button>
                             </td>
-                            <td><button class="btn btn-success" onclick="window.location = 'manageusers/{{$user->id}}/edit'">Edit</button></td>
                             <td>
-                                <form action="{{ url("/manageusers/delete/$user->id") }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button type="submit">delete</button>
-                                </form>
+                                {!! Form::open(['action'=>['UsersController@destroy',$user->id],'method'=>'POST']) !!}
+                                    {!! Form::hidden('_method','DELETE') !!}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                         @endforeach
                     </table>
+                <div class="form-control">
+                    <button class="btn btn-primary" onclick="window.location = '/add-user'">Add user</button>
                 </div>
             </div>
         </div>
