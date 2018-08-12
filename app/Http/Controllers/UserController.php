@@ -10,6 +10,15 @@ use App\Http\Middleware\CheckRole;
 
 class UserController extends Controller
 {
+
+
+  // Access control using middleware
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
+
     /**
      * Create a new controller instance.
      *
@@ -22,7 +31,7 @@ class UserController extends Controller
 
     public function index(){
         view('manageusers');
-    }   
+    }
     /**
      * Show the application dashboard.
      *

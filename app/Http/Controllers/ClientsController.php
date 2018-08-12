@@ -8,6 +8,14 @@ use App\Client;
 
 class ClientsController extends Controller
 {
+
+    // Access control using middleware exception for show and index
+    public function __construct()
+    {
+      $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
