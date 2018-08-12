@@ -8,11 +8,6 @@
                 <div class="card-header">
                     <h5>Users in the system</h5>
                 </div>
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
                     <table class="table">
                         <tr>
                             <th>ID</th>
@@ -30,17 +25,25 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->phone}}</td>
                             <td>{{$user->title}}</td>
-                            <td><button class="btn btn-success" onclick="window.location = 'manageusers/{{$user->id}}/edit'">Edit</button></td>
                             <td>
-                                <form action="{{ url("/manageusers/delete/$user->id") }}" method="POST">
+                                {!! Form::open(['action'=>['UserController@edit',$user->id],"method"=>"POST"]) !!}
+                                    <button type="submit" class="btn btn-success">Edit</button>
+                                {!! Form::close() !!}
+                            </td>
+                            <td>
+                                {!! Form::open(['action'=>['UserController@delete',$user->id],"method"=>"POST"]) !!}
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button type="submit" class="btn btn-danger">delete</button>
-                                </form>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    {!! Form::hidden('_method','DELETE') !!}
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                         @endforeach
                     </table>
+                <div class="form-control">
+                    <button class="btn btn-primary" onclick="window.location = '/add-user'">Add user</button>
+                </div>
             </div>
         </div>
     </div>
