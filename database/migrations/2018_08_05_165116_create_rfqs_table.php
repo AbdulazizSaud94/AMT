@@ -17,7 +17,7 @@ class CreateRfqsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('ref');
-            $table->integer('created_by');
+            $table->integer('user_id');
             $table->string('status');
             $table->string('revision');
             $table->integer('project_id');

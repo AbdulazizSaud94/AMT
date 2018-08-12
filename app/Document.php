@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
-    //
+  public function rfqs(){
+    return $this->belongsToMany('App\Rfq', 'rfq_document');
+  }
 }
