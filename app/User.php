@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function roles(){
-        return $this->belongsToMany('App\User', 'user_role');
+        return $this->belongsToMany('App\Role', 'user_role');
     }
 
     public function hasAnyRole($roles)
@@ -49,5 +49,9 @@ class User extends Authenticatable
 
     public function projects(){
       return $this->hasMany('App\Project');
+    }
+
+    public function rfqs(){
+      return $this->hasMany('App\Rfq');
     }
 }

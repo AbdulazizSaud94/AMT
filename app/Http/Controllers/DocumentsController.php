@@ -77,7 +77,7 @@ class DocumentsController extends Controller
       $document->description = $request->input('description');
       $document->file = $fileNameToStore;
       $document->type = $extention;
-      $document->created_by = auth()->user()->id; // add current user id to the document
+      $document->user_id = auth()->user()->id; // add current user id to the document
       $document->save();
 
       return redirect('/documents')->with('success', 'Document Added');

@@ -8,8 +8,9 @@
       <div class="card card-block bg-faded">
         <p>Location: {{$project->location}}</p>
         <p>Type: {{$project->type}}</p>
-        <br>
-        {{-- <p>Owner: {{$project->user->name}}</p> --}}
+
+        <p>By: {{$project->user->name}}</p>
+
       </div>
 
 
