@@ -6,6 +6,8 @@ Route::get('/','HomeController@index');
 //Route::get('/manage-users','UserControllers@index');
 //Route::get('/manage-users', 'UserController@getUsers');
 //Route::post('/manageusers/edit/{{user->id}}','UserController@edit');
-Route::resource('users', "UserController");
+//Route::get('users.edit',"UsersController@edit");
+Route::delete('/users/delete/{id}', "UsersController@delete");
+Route::resource('users', "UsersController");
 
-//Route::delete('/manage-users/delete/{id}', "UserController@delete");
+

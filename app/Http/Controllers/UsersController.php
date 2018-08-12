@@ -8,7 +8,7 @@ use App\Role;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\CheckRole;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,15 +26,16 @@ class UserController extends Controller
     }
     public function edit($id){
         $user = User::find($id);
-        return view('edit')->with('user',$user);
+        return view('users.edit')->with('user',$user);
     }
+
     public function update(Request $request,$id){
-        $this->validate($request,[
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'phone' => "required|string|unique:users",
-            'password' => 'string|confirmed',
-        ]);
+//        $this->validate($request,[
+//            'name' => 'required|string|max:255',
+//            'email' => 'required|string|email|max:255',
+//            'phone' => "required|string|unique:users",
+//            'password' => 'confirmed',
+//        ]);
 
 
         $user = User::find($id);
@@ -62,15 +63,11 @@ class UserController extends Controller
 //            $user->roles()->attach($role);
         return redirect('/users')->with('status',"User has been updated successfully");
     }
-    public function delete($id){
+    public function destroy($id){
         $user = User::find($id)->delete();
         if(User::find($id)){
             return redirect('/users')->with('danger',"Error: $id is not deleted");
         }else
             return redirect('/users')->with('status',"successfully deleted $id");
     }
-//    public function getUsers(){
-//        $users = User::all();
-//        return view('/users')->with('users',$users);
-//    }
 }

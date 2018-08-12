@@ -26,16 +26,12 @@
                             <td>{{$user->phone}}</td>
                             <td>{{$user->title}}</td>
                             <td>
-                                {!! Form::open(['action'=>['UserController@edit',$user->id],"method"=>"POST"]) !!}
-                                    <button type="submit" class="btn btn-success">Edit</button>
-                                {!! Form::close() !!}
+                                <button type="submit" class="btn btn-success" onclick="window.location = '/users/{{$user->id}}/edit'">Edit</button>
                             </td>
                             <td>
-                                {!! Form::open(['action'=>['UserController@delete',$user->id],"method"=>"POST"]) !!}
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                {!! Form::open(['action'=>['UsersController@destroy',$user->id],'method'=>'POST']) !!}
                                     {!! Form::hidden('_method','DELETE') !!}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                 {!! Form::close() !!}
                             </td>
                         </tr>

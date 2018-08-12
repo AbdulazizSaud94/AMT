@@ -71,9 +71,12 @@ class RegisterController extends Controller
         $user->password = Hash::make($data['password']);
         $user->title    = $data['title'];
         $user->save();
-        $get_role_from_table = Role::where('name','super admin')->first();
-        $user->roles()->attach($get_role_from_table);
-
+        $get_role_from_table = "none";
+        foreach ($rolesArr as $role)
+            if($role != 'none'){
+                $get_role_from_table = Role::where('name',$role)->first();
+                $user->roles()->attach($get_role_from_table);
+            }
         return $user;
     }
 }

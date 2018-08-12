@@ -8,7 +8,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    {!! Form::open(['action' => ['UserController@update', $user->id] , "method"=>"POST"]) !!}
+                    {!! Form::open(['action' => ['UsersController@update', $user->id] , "method"=>"POST"]) !!}
                         <div class="form-group row">
                             <table class="table text-center">
                                 <tr>
