@@ -21,6 +21,6 @@ class CheckRole
                 return $next($request);
         }
 
-        return response("You're not authorized");
+        return redirect('/')->with('danger',"You're not authorized to access this page");
     }
 }
