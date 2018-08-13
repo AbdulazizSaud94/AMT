@@ -15,28 +15,15 @@
                                     <th colspan=8>User Role</th>
                                 </tr>
                                 <tr>
-                                    <th>Super Admin</th>
-                                    <th>Admin</th>
-                                    <th>General Manger</th>
-                                    <th>Sales Manger</th>
-                                    <th>Pre-sales Manger</th>
-                                    <th>Sales Engineer</th>
-                                    <th>Pre-sales Engineer</th>
-                                    <th>Customer</th>
-                                </tr>
-                                <tr>
-
-                                    <td><input type="checkbox" name="super-admin" value="super admin" @if($user->hasRole('super admin')) checked @endif></td>
-                                    <td><input type="checkbox" name="admin" value="admin" @if($user->hasRole('admin')) checked @endif></td>
-                                    <td><input type="checkbox" name="general-manger" value="general manger" @if($user->hasRole('general manger')) checked @endif></td>
-                                    <td><input type="checkbox" name="sales-manger" value="sales manger" @if($user->hasRole('sales manger')) checked @endif></td>
-                                    <td><input type="checkbox" name="pre-sales-manger" value="pre-sales manger" @if($user->hasRole('pre-sales manger')) checked @endif></td>
-                                    <td><input type="checkbox" name="sales-engineer" value="sales engineer" @if($user->hasRole('sales-engineer')) checked @endif></td>
-                                    <td><input type="checkbox" name="pre-sales-engineer" value="pre-sales engineer" @if($user->hasRole('pre-sales engineer')) checked @endif></td>
-                                    <td><input type="checkbox" name="customer" value="customer" @if($user->hasRole('customer')) checked @endif></td>
+                                    @if(count($roles)>0)
+                                        @foreach($roles as $role)
+                                            <td>
+                                                <label for="{{$role->id}}">{{$role->name}}</label><input type="checkbox" id="{{$role->id}}" name="role[]" value="{{$role->name}}" @if($user->hasRole($role->name)) checked @endif>
+                                            </td>
+                                        @endforeach
+                                    @endif
                                 </tr>
                             </table>
-
                         </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
