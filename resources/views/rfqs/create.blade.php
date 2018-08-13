@@ -15,11 +15,11 @@
         <label class="form-check-label" for="inlineRadio2">Mail</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="receivedBy" id="inlineRadio1" value="Fax">
+        <input class="form-check-input" type="radio" name="receivedBy" id="inlineRadio3" value="Fax">
         <label class="form-check-label" for="email">Fax</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="receivedBy" id="inlineRadio1" value="Hand">
+        <input class="form-check-input" type="radio" name="receivedBy" id="inlineRadio4" value="Hand">
         <label class="form-check-label" for="email">Hand</label>
       </div>
   </div>
@@ -58,22 +58,40 @@
           <label class="form-check-label" for="inlineRadio2">Ex-Warehouse</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviryPlace" id="inlineRadio1" value="Client Warehouse">
+          <input class="form-check-input" type="radio" name="deleviryPlace" id="inlineRadio3" value="Client Warehouse">
           <label class="form-check-label" for="email">Client Warehouse</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviryPlace" id="inlineRadio1" value="Job Site">
+          <input class="form-check-input" type="radio" name="deleviryPlace" id="inlineRadio4" value="Job Site">
           <label class="form-check-label" for="email">Job Site</label>
         </div>
     </div>
 <hr>
+
+  <label class="ml-3">Select project</label> <b class="ml-2">or</b> <a href="/laravel/AMT/public/projects/create" class="btn btn-primary btn-sm ml-3">Add new project</a>
+<div class="form-group col-md-2">
+      <select class="form-control form-control-sm">
+        <option selected>Choose...</option>
+        @foreach($projects as $project)
+          <option>{{$project->name}}</option>
+        @endforeach
+      </select>
+</div>
+
+<br>
     <div class="form-group col-md-2">
           <label for="project_type">Project Type:</label>
-          <select id="inputState" class="form-control">
+          <select class="form-control form-control-sm">
+            <option selected>Choose...</option>
             <option>Budgetary</option>
             <option>Bidding</option>
             <option>On Hand</option>
             <option>Awarded</option>
           </select>
+    </div>
+  <hr>
+
+
+
   {!! Form::close() !!}
 @endsection

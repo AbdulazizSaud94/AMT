@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Rfq;
 use App\System;
 use App\Workscope;
+use App\Project;
   //to use Rfq model and eloquent for database
 // use DB; Basic SQL commands
 
@@ -40,7 +41,8 @@ class RfqsController extends Controller
     {
       $systems = System::all();
       $workscopes = Workscope::all();
-      return view('rfqs.create')->with('workscopes', $workscopes)->with('systems', $systems);
+      $projects = Project::all();
+      return view('rfqs.create')->with('workscopes', $workscopes)->with('systems', $systems)->with('projects', $projects);
     }
 
     /**
