@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Rfq;  //to use Rfq model and eloquent for database
+use App\Rfq;
+use App\System;
+use App\Workscope;
+  //to use Rfq model and eloquent for database
 // use DB; Basic SQL commands
 
 class RfqsController extends Controller
 {
 
   // Access control using middleware
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
+  // public function __construct()
+  // {
+  //   $this->middleware('auth');
+  // }
 
     /**
      * Display a listing of the resource.
@@ -35,7 +38,9 @@ class RfqsController extends Controller
      */
     public function create()
     {
-        return view('rfqs.create');
+      $systems = System::all();
+      $workscopes = Workscope::all();
+      return view('rfqs.create')->with('workscopes', $workscopes)->with('systems', $systems);
     }
 
     /**
@@ -46,7 +51,7 @@ class RfqsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('rfqs.index')->with('rfqs', $rfqs);
     }
 
     /**
