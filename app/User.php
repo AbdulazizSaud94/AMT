@@ -47,6 +47,36 @@ class User extends Authenticatable
             return false;
     }
 
+    public function addRole($role){
+        if(!$this->hasRole($role)) {
+            $get_role = Role::where('name',$role)->first();
+            $this->roles()->attach($get_role);
+        }
+    }
+    public function addRoles($roles){
+        if(is_array($roles)) {
+            foreach ($roles as $role)
+                $this->addRole($role);
+        }
+    }
+    public function removeRole($role){
+        if($this->hasRole($role)) {
+            $get_role = Role::where('name',$role)->first();
+            $this->roles()->detach($get_role);
+        }
+    }
+    public function removeRoles($roles){
+        if(is_array($roles)) {
+            foreach ($roles as $role) {
+                $this->removeRole($role);
+            }
+        }
+    }
+    public function addOnlyRoles($roles){
+        if(is_array($roles)){
+           $this->roles()->detach();
+           $this->addRoles($roles);
+        }
     public function projects(){
       return $this->hasMany('App\Project');
     }

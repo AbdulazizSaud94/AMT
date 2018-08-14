@@ -26,7 +26,8 @@ class UsersController extends Controller
     }
     public function edit($id){
         $user = User::find($id);
-        return view('users.edit')->with('user',$user);
+        $roles = Role::all();
+        return view('users.edit')->with(['user'=>$user,'roles',$roles]);
     }
 
     public function update(Request $request,$id){
@@ -34,7 +35,6 @@ class UsersController extends Controller
 //            'name' => 'required|string|max:255',
 //            'email' => 'required|string|email|max:255',
 //            'phone' => "required|string|unique:users",
-//            'password' => 'confirmed',
 //        ]);
 
 
@@ -44,25 +44,15 @@ class UsersController extends Controller
         $user->phone = $request->input('phone');
         $user->title = $request->input('title');
 
-        if($request->input('password') != null )
+        if($request->input('password') != null )// Password change
             $user->password = $request->input('password');
+        $roles = $request->input('role');
+        $user->addOnlyRoles($roles);
+
         $user->save();
-//        if($role = $request->input('super-admin'))
-//            $user->roles()->attach($role);
-//        if($role = $request->input('admin'))
-//            $user->roles()->attach($role);
-//        if($role = $request->input('sales-manger'))
-//            $user->roles()->attach($role);
-//        if($role = $request->input('customer'))
-//            $user->roles()->attach($role);
-//        if($role = $request->input('pre-sales-manger'))
-//            $user->roles()->attach($role);
-//        if($role = $request->input('pre-sales-engineer'))
-//            $user->roles()->attach($role);
-//        if($role = $request->input('sales-engineer'))
-//            $user->roles()->attach($role);
-        return redirect('/users')->with('status',"User has been updated successfully");
+        return redirect('/users')->with('status',"Successfully updated");
     }
+
     public function destroy($id){
         $user = User::find($id)->delete();
         if(User::find($id)){
