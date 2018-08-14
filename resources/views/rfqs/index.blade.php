@@ -13,5 +13,5 @@
     <p>No available RFQs</p>
   @endif
     <br>
-    <a href="/laravel/AMT/public/rfqs/create" class="btn btn-secondary">Add RFQ</a>
+    <a href="rfqs/create" class="btn btn-secondary">Add RFQ</a>
 @endsection
