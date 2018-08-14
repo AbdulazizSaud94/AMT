@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRfqdevisionTable extends Migration
+class CreateRfqdivisionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateRfqdevisionTable extends Migration
      */
     public function up()
     {
-        Schema::create('rfq_devision', function (Blueprint $table) {
+        Schema::create('rfq_division', function (Blueprint $table) {
           $table->integer('rfq_id')->unsigned();
-          $table->integer('devision_id')->unsigned();
+          $table->integer('division_id')->unsigned();
 
-          $table->unique(['rfq_id', 'devision_id']);
+          $table->unique(['rfq_id', 'division_id']);
           $table->foreign('rfq_id')->references('id')->on('rfqs')
               ->onDelete('cascade')->onUpdate('cascade');
-          $table->foreign('devision_id')->references('id')->on('devisions')
+          $table->foreign('division_id')->references('id')->on('divisions')
               ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -32,6 +32,6 @@ class CreateRfqdevisionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rfq_devision');
+        Schema::dropIfExists('rfq_division');
     }
 }

@@ -114,11 +114,11 @@
 <hr>
 {{-- Decisions check boxes --}}
   <div class="form-check">
-  <label><b>Devisions:</b></label>
-  @foreach($devisions as $devision)
+  <label><b>Divisions:</b></label>
+  @foreach($divisions as $division)
     <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="{{$devision->id}}">
-    <label class="form-check-label" for="defaultCheck1">{{$devision->name}}</label>
+    <input class="form-check-input" type="checkbox" value="{{$division->id}}">
+    <label class="form-check-label" for="defaultCheck1">{{$division->name}}</label>
     </div>
   @endforeach
   </div>
