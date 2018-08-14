@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
        $superAdmin->email = 'superadmin@admin.com';
        $superAdmin->phone = '1324123412';
        $superAdmin->password = Hash::make('ProtectUs-123');
-       $superAdmin->title = 'SuperAdmin';
+       $superAdmin->title = 'super admin';
        $superAdmin->save();
        $superAdmin->roles()->attach($role_super_admin);
 

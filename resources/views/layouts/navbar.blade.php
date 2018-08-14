@@ -21,9 +21,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            @if(Auth::user()->title == 'super admin')
-                                <a class="dropdown-item" href="{{ route('register') }}">{{ __('Add new user') }}</a>
-                                <a class="dropdown-item" href="">{{ __('Manage Users') }}</a>
+                            @if(Auth::user()->hasRole('super admin'))
+                                <a class="dropdown-item" href="register">{{ __('Add new user') }}</a>
+                                <a class="dropdown-item" href="users">{{ __('Manage Users') }}</a>
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
