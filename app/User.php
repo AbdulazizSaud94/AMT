@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function roles(){
-        return $this->belongsToMany('App\User', 'user_role');
+        return $this->belongsToMany('App\Role','user_role');
     }
 
     public function hasAnyRole($roles)
@@ -40,14 +40,48 @@ class User extends Authenticatable
     }
 
     public function hasRole($role){
-        $test = $this->roles()->where('name',$role)->first();
-        if($test)
+        $get_role = $this->roles()->where('name',$role)->first();
+        if($get_role)
             return true;
         else
             return false;
     }
 
+    public function addRole($role){
+        if(!$this->hasRole($role)) {
+            $get_role = Role::where('name',$role)->first();
+            $this->roles()->attach($get_role);
+        }
+    }
+    public function addRoles($roles){
+        if(is_array($roles)) {
+            foreach ($roles as $role)
+                $this->addRole($role);
+        }
+    }
+    public function removeRole($role){
+        if($this->hasRole($role)) {
+            $get_role = Role::where('name',$role)->first();
+            $this->roles()->detach($get_role);
+        }
+    }
+    public function removeRoles($roles){
+        if(is_array($roles)) {
+            foreach ($roles as $role) {
+                $this->removeRole($role);
+            }
+        }
+    }
+    public function addOnlyRoles($roles){
+        if(is_array($roles)){
+           $this->roles()->detach();
+           $this->addRoles($roles);
+        }
     public function projects(){
       return $this->hasMany('App\Project');
+    }
+
+    public function rfqs(){
+      return $this->hasMany('App\Rfq');
     }
 }

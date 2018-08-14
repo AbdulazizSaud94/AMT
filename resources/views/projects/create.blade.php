@@ -20,14 +20,6 @@
       {{Form::label('type', 'Project type')}}
       {{Form::text('type', '', ['class' => 'form-control', 'placeholder' => 'Enter project type'])}}
     </div>
-
-
-
-
-
-
-
-
     {{Form::submit('Submit', ['class' => 'btn btn-secondary btn-lg'])}}
 
   {!! Form::close() !!}

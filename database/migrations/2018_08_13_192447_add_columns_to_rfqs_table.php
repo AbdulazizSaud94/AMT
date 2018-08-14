@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocumentsTable extends Migration
+class AddColumnsToRfqsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('rfqs', function (Blueprint $table) {
             $table->string('title');
-            $table->mediumText('description');
-            $table->string('type');
-            $table->string('file');
-            $table->string('user_id');
+            $table->string('description');
+            $table->string('project_type');
         });
     }
 
@@ -31,6 +27,11 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::table('rfqs', function (Blueprint $table) {
+            $table->dropColumn('title');
+            $table->dropColumn('description');
+            $table->dropColumn('project_type');
+
+        });
     }
 }
