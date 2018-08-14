@@ -17,7 +17,7 @@ class Rfq extends Model
     return $this->belongsTo('App\User');
   }
 
-  public function client(){
+  public function clients(){
     return $this->belongsTo('App\Client');
   }
 

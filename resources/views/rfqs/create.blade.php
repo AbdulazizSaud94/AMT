@@ -8,19 +8,19 @@
   <div class="form-check">
     <label><b>Received By:</b></label>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="received_by" value="Email">
+        <input class="form-check-input" type="radio" name="receiving_method" value="Email">
         <label class="form-check-label" for="inlineRadio1">Email</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="received_by" value="Mail">
+        <input class="form-check-input" type="radio" name="receiving_method" value="Mail">
         <label class="form-check-label" for="inlineRadio2">Mail</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="received_by" value="Fax">
+        <input class="form-check-input" type="radio" name="receiving_method" value="Fax">
         <label class="form-check-label" for="email">Fax</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="received_by" value="Hand">
+        <input class="form-check-input" type="radio" name="receiving_method" value="Hand">
         <label class="form-check-label" for="email">Hand</label>
       </div>
   </div>
@@ -30,7 +30,7 @@
   <label><b>Systems:</b></label>
   @foreach($systems as $system)
     <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="{{$system->id}}">
+    <input class="form-check-input" type="checkbox" name = "system[]" value="{{$system->id}}">
     <label class="form-check-label" for="defaultCheck1">{{$system->name}}</label>
     </div>
   @endforeach
@@ -41,7 +41,7 @@
   <label><b>Scope of work:</b></label>
   @foreach($workscopes as $workscope)
     <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="{{$workscope->id}}">
+    <input class="form-check-input" type="checkbox" name = "workscope[]" value="{{$workscope->id}}">
     <label class="form-check-label" for="defaultCheck1">{{$workscope->title}}</label>
     </div>
   @endforeach
@@ -51,19 +51,19 @@
     <div class="form-check">
       <label><b>Deleviry Place:</b></label>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviry_place" value="FOB">
+          <input class="form-check-input" type="radio" name="delivery_place" value="FOB">
           <label class="form-check-label" for="inlineRadio1">FOB</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviry_place" value="Ex-Warehouse">
+          <input class="form-check-input" type="radio" name="delivery_place" value="Ex-Warehouse">
           <label class="form-check-label" for="inlineRadio2">Ex-Warehouse</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviry_place" value="Client Warehouse">
+          <input class="form-check-input" type="radio" name="delivery_place" value="Client Warehouse">
           <label class="form-check-label" for="email">Client Warehouse</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviry_place" value="Job Site">
+          <input class="form-check-input" type="radio" name="delivery_place" value="Job Site">
           <label class="form-check-label" for="email">Job Site</label>
         </div>
     </div>
@@ -72,7 +72,7 @@
 {{-- Select project and type --}}
   <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="/laravel/AMT/public/projects/create" class="btn btn-primary btn-sm ml-3">Add new project</a>
 <div class="form-group col-md-2">
-      <select class="form-control form-control-sm">
+      <select class="form-control form-control-sm" name = "project_id">
         <option selected>Choose...</option>
         @foreach($projects as $project)
           <option>{{$project->name}}</option>
@@ -104,10 +104,10 @@
 {{-- Selelct client --}}
   <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="/laravel/AMT/public/clients/create" class="btn btn-primary btn-sm ml-3">Add new client</a>
 <div class="form-group col-md-2">
-      <select class="form-control form-control-sm">
+      <select class="form-control form-control-sm" name="client_id">
         <option selected>Choose...</option>
         @foreach($clients as $client)
-          <option>{{$client->name}}</option>
+          <option value="{{$client->id}}">{{$client->name}}</option>
         @endforeach
       </select>
 </div>
@@ -124,14 +124,15 @@
   </div>
 <hr>
 
-
+{{-- Win_chance range selector --}}
   <div class="form-group col-md-2">
     <label for="formControlRange">Chance to win:</label>
-    <input type="range" name = "win_chane" class="form-control-range">
+    <input type="range" name = "win_chance" class="form-control-range">
   </div>
 
 <hr>
 
+{{-- Margin range selector --}}
   <div class="form-group col-md-2">
     <label for="formControlRange">Margin:</label>
     <input type="range" name = "margin" class="form-control-range">
