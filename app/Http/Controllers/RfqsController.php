@@ -8,6 +8,7 @@ use App\Rfq;
 use App\System;
 use App\Workscope;
 use App\Project;
+use App\Client;
   //to use Rfq model and eloquent for database
 // use DB; Basic SQL commands
 
@@ -42,7 +43,8 @@ class RfqsController extends Controller
       $systems = System::all();
       $workscopes = Workscope::all();
       $projects = Project::all();
-      return view('rfqs.create')->with('workscopes', $workscopes)->with('systems', $systems)->with('projects', $projects);
+      $clients = Client::all();
+      return view('rfqs.create')->with('workscopes', $workscopes)->with('systems', $systems)->with('projects', $projects)->with('clients', $clients);
     }
 
     /**

@@ -1,25 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="mt-1">Create RFQ</h1> {!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST ']) !!}
+<h1 class="mt-1">Create RFQ</h1> {!! Form::open(['action' => 'RfqsController
+@store ', 'method ' => 'POST ']) !!}
 <hr><br>
 {{-- Received By radio buttons --}}
   <div class="form-check">
     <label><b>Received By:</b></label>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="receivedBy" id="inlineRadio1" value="Email">
+        <input class="form-check-input" type="radio" name="received_by" id="inlineRadio1" value="Email">
         <label class="form-check-label" for="inlineRadio1">Email</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="receivedBy" id="inlineRadio2" value="Mail">
+        <input class="form-check-input" type="radio" name="received_by" id="inlineRadio2" value="Mail">
         <label class="form-check-label" for="inlineRadio2">Mail</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="receivedBy" id="inlineRadio3" value="Fax">
+        <input class="form-check-input" type="radio" name="received_by" id="inlineRadio3" value="Fax">
         <label class="form-check-label" for="email">Fax</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="receivedBy" id="inlineRadio4" value="Hand">
+        <input class="form-check-input" type="radio" name="received_by" id="inlineRadio4" value="Hand">
         <label class="form-check-label" for="email">Hand</label>
       </div>
   </div>
@@ -35,7 +36,7 @@
   @endforeach
   </div>
 <hr>
-  {{-- Scope of wprk check boxes --}}
+  {{-- Scope of work check boxes --}}
   <div class="form-check">
   <label><b>Scope of work:</b></label>
   @foreach($workscopes as $workscope)
@@ -50,25 +51,26 @@
     <div class="form-check">
       <label><b>Deleviry Place:</b></label>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviryPlace" id="inlineRadio1" value="FOB">
+          <input class="form-check-input" type="radio" name="deleviry_place" id="inlineRadio1" value="FOB">
           <label class="form-check-label" for="inlineRadio1">FOB</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviryPlace" id="inlineRadio2" value="Ex-Warehouse">
+          <input class="form-check-input" type="radio" name="deleviry_place" id="inlineRadio2" value="Ex-Warehouse">
           <label class="form-check-label" for="inlineRadio2">Ex-Warehouse</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviryPlace" id="inlineRadio3" value="Client Warehouse">
+          <input class="form-check-input" type="radio" name="deleviry_place" id="inlineRadio3" value="Client Warehouse">
           <label class="form-check-label" for="email">Client Warehouse</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="deleviryPlace" id="inlineRadio4" value="Job Site">
+          <input class="form-check-input" type="radio" name="deleviry_place" id="inlineRadio4" value="Job Site">
           <label class="form-check-label" for="email">Job Site</label>
         </div>
     </div>
 <hr>
 
-  <label class="ml-3">Select project</label> <b class="ml-2">or</b> <a href="/laravel/AMT/public/projects/create" class="btn btn-primary btn-sm ml-3">Add new project</a>
+{{-- Select project and type --}}
+  <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="/laravel/AMT/public/projects/create" class="btn btn-primary btn-sm ml-3">Add new project</a>
 <div class="form-group col-md-2">
       <select class="form-control form-control-sm">
         <option selected>Choose...</option>
@@ -78,19 +80,39 @@
       </select>
 </div>
 
-<br>
-    <div class="form-group col-md-2">
-          <label for="project_type">Project Type:</label>
-          <select class="form-control form-control-sm">
-            <option selected>Choose...</option>
-            <option>Budgetary</option>
-            <option>Bidding</option>
-            <option>On Hand</option>
-            <option>Awarded</option>
-          </select>
+<div class="form-check">
+  <label>Project Type:</label>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="project_type" id="inlineRadio1" value="Budgetary">
+      <label class="form-check-label" for="inlineRadio1">Budgetary</label>
     </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="project_type" id="inlineRadio2" value="Bidding">
+      <label class="form-check-label" for="inlineRadio2">Bidding</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="project_type" id="inlineRadio3" value="On Hand">
+      <label class="form-check-label" for="email">On Hand</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="project_type" id="inlineRadio4" value="Awarded">
+      <label class="form-check-label" for="email">Awarded</label>
+    </div>
+</div>
   <hr>
 
+{{-- Selelct client --}}
+  <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="/laravel/AMT/public/clients/create" class="btn btn-primary btn-sm ml-3">Add new client</a>
+<div class="form-group col-md-2">
+      <select class="form-control form-control-sm">
+        <option selected>Choose...</option>
+        @foreach($clients as $client)
+          <option>{{$client->name}}</option>
+        @endforeach
+      </select>
+</div>
+
+  <hr>
 
 
   {!! Form::close() !!}
