@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="mt-1">Create RFQ</h1> {!! Form::open(['action' => 'RfqsController
-@store ', 'method ' => 'POST ']) !!}
+<h1 class="mt-1">Create RFQ</h1> {!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST '])!!}
 <hr><br>
 {{-- Received By radio buttons --}}
   <div class="form-check">
@@ -111,9 +110,31 @@
         @endforeach
       </select>
 </div>
+<hr>
+{{-- Decisions check boxes --}}
+  <div class="form-check">
+  <label><b>Devisions:</b></label>
+  @foreach($devisions as $devision)
+    <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="{{$devision->id}}" id="defaultCheck1">
+    <label class="form-check-label" for="defaultCheck1">{{$devision->name}}</label>
+    </div>
+  @endforeach
+  </div>
+<hr>
 
-  <hr>
-
-
+<form>
+  <div class="form-group col-md-2">
+    <label for="formControlRange">Chance to win:</label>
+    <input type="range" name = "win_chane" class="form-control-range" id="formControlRange">
+  </div>
+</form>
+<hr>
+<form>
+  <div class="form-group col-md-2">
+    <label for="formControlRange">Margin:</label>
+    <input type="range" name = "margin" class="form-control-range" id="formControlRange">
+  </div>
+</form>
   {!! Form::close() !!}
 @endsection
