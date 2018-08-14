@@ -9,7 +9,7 @@ use App\System;
 use App\Workscope;
 use App\Project;
 use App\Client;
-use App\Devision;
+use App\Division;
   //to use Rfq model and eloquent for database
 // use DB; Basic SQL commands
 
@@ -45,8 +45,8 @@ class RfqsController extends Controller
       $workscopes = Workscope::all();
       $projects = Project::all();
       $clients = Client::all();
-      $devisions = Devision::all();
-      return view('rfqs.create')->with('workscopes', $workscopes)->with('systems', $systems)->with('projects', $projects)->with('clients', $clients)->with('devisions', $devisions);
+      $divisions = Division::all();
+      return view('rfqs.create')->with('workscopes', $workscopes)->with('systems', $systems)->with('projects', $projects)->with('clients', $clients)->with('divisions', $divisions);
     }
 
     /**
@@ -57,7 +57,31 @@ class RfqsController extends Controller
      */
     public function store(Request $request)
     {
-        return view('rfqs.index')->with('rfqs', $rfqs);
+      // $this->validate($request, [
+      //     'received_by' => 'required',
+      //     'deleviry_place' => 'required',
+      //
+      // ]);
+      $rfq = new Rfq();
+      $systems = $request->input('system');
+      $workscopes = $request->input('workscope');
+      $rfq->user_id = auth()->user()->id; // add current user id to the project
+      $rfq->client_id = $request->input('client_id');
+      $rfq->receiving_method = $request->input('receiving_method');
+      $rfq->delivery_place = $request->input('delivery_place');
+      $rfq->win_chance = $request->input('win_chance');
+      $rfq->margin = $request->input('margin');
+      $rfq->save();
+
+      foreach ($systems as $system) {
+          $rfq->systems()->attach($system);
+      }
+
+      foreach ($workscopes as $workscope) {
+          $rfq->workscopes()->attach($workscope);
+      }
+
+      return redirect('/rfqs')->with('success', 'RFQ Added');
     }
 
     /**
