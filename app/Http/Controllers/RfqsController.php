@@ -57,6 +57,11 @@ class RfqsController extends Controller
      */
     public function store(Request $request)
     {
+      $this->validate($request, [
+          'received_by' => 'required',
+          'deleviry_place' => 'required',
+          
+      ]);
         return view('rfqs.index')->with('rfqs', $rfqs);
     }
 

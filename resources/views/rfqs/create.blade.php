@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="mt-1">Create RFQ</h1> {!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST '])!!}
+<h1 class="mt-1">Create RFQ</h1>
+{!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST '])!!}
 <hr><br>
 {{-- Received By radio buttons --}}
   <div class="form-check">
@@ -123,18 +124,19 @@
   </div>
 <hr>
 
-<form>
+
   <div class="form-group col-md-2">
     <label for="formControlRange">Chance to win:</label>
     <input type="range" name = "win_chane" class="form-control-range">
   </div>
-</form>
+
 <hr>
-<form>
+
   <div class="form-group col-md-2">
     <label for="formControlRange">Margin:</label>
     <input type="range" name = "margin" class="form-control-range">
   </div>
-</form>
+
+  {{Form::submit('Submit', ['class' => 'btn btn-secondary btn-lg'])}}
   {!! Form::close() !!}
 @endsection
