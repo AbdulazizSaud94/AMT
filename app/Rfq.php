@@ -33,8 +33,8 @@ class Rfq extends Model
     return $this->belongsToMany('App\Workscope', 'rfq_workscope');
   }
 
-  public function devisions(){
-    return $this->belongsToMany('App\Devision', 'rfq_devision');
+  public function divisions(){
+    return $this->belongsToMany('App\Division', 'rfq_division');
   }
 
   public function competitors(){
