@@ -75,7 +75,7 @@
       <select class="form-control form-control-sm" name = "project_id">
         <option selected>Choose...</option>
         @foreach($projects as $project)
-          <option>{{$project->name}}</option>
+          <option value="{{$project->id}}">{{$project->name}}</option>
         @endforeach
       </select>
 </div>
@@ -112,12 +112,12 @@
       </select>
 </div>
 <hr>
-{{-- Decisions check boxes --}}
+{{-- Divisions check boxes --}}
   <div class="form-check">
   <label><b>Divisions:</b></label>
   @foreach($divisions as $division)
     <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="{{$division->id}}">
+    <input class="form-check-input" type="checkbox" name = 'division[]' value="{{$division->id}}">
     <label class="form-check-label" for="defaultCheck1">{{$division->name}}</label>
     </div>
   @endforeach

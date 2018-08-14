@@ -65,8 +65,11 @@ class RfqsController extends Controller
       $rfq = new Rfq();
       $systems = $request->input('system');
       $workscopes = $request->input('workscope');
+      $divisions = $request->input('division');
       $rfq->user_id = auth()->user()->id; // add current user id to the project
       $rfq->client_id = $request->input('client_id');
+      $rfq->project_id = $request->input('project_id');
+      $rfq->project_type = $request->input('project_type');
       $rfq->receiving_method = $request->input('receiving_method');
       $rfq->delivery_place = $request->input('delivery_place');
       $rfq->win_chance = $request->input('win_chance');
@@ -79,6 +82,10 @@ class RfqsController extends Controller
 
       foreach ($workscopes as $workscope) {
           $rfq->workscopes()->attach($workscope);
+      }
+
+      foreach ($divisions as $division) {
+          $rfq->divisions()->attach($division);
       }
 
       return redirect('/rfqs')->with('success', 'RFQ Added');
