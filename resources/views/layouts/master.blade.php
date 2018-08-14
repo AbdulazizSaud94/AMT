@@ -16,6 +16,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,19 +25,21 @@
 <body>
 <div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2 no-gutters p-0">
-            @include('layouts.sidebar')
+        @if(Auth::user())
+            <div class="row">
+                <div class="col-md-2 no-gutters p-0">
+                    @include('layouts.sidebar')
+                </div>
+                <div class="col-md-10 p-0">
+                    @include('layouts.navbar')
+                    <main class="py-4 p-3">
+                        @include('layouts.messages')
+                        @yield('content')
+                    </main>
+                </div>
             </div>
-            <div class="col-md-10 p-0">
-                @include('layouts.navbar')
-                <main class="py-4 p-3">
-                    @include('layouts.messages')
-                    @yield('content')
-                </main>
-            </div>
-        </div>
     </div>
+    @endif
 </div>
 </body>
 </html>

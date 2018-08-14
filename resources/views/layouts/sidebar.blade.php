@@ -13,8 +13,7 @@
                 <p class="m-0"> {{ Auth::user()->name  }} </p>
             </li>
             <li class="nav-item">
-                <strong>Role here</strong>
-                {{--<strong>{{ Auth::user()->role  }}</strong>--}}
+                <strong>{{ Auth::user()->title  }}</strong>
             </li>
             <li class="nav-item">
                 <a class="nav-link active mt-3" href="/AMT/public">
