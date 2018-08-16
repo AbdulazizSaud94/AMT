@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Devision;
+use App\Division;
 
-class DevisionsController extends Controller
+class DivisionsController extends Controller
 {
 
   // Access control using middleware
@@ -22,9 +22,9 @@ class DevisionsController extends Controller
      */
     public function index()
     {
-      $devisions = Devision::all();
+      $divisions = Division::all();
       // $rfqs = Rfq::orderBy('created_at', 'desc')->get();
-      return view('devisions.index')->with('devisions', $devisions);
+      return view('divisions.index')->with('divisions', $divisions);
     }
 
     /**
@@ -34,7 +34,7 @@ class DevisionsController extends Controller
      */
     public function create()
     {
-        return view('devisions.create');
+        return view('divisions.create');
     }
 
     /**
@@ -50,13 +50,13 @@ class DevisionsController extends Controller
           'description' => 'required'
       ]);
 
-      // crete new devision
-      $devision = new Devision;
-      $devision->name = $request->input('name');
-      $devision->description = $request->input('description');
-      $devision->save();
+      // crete new division
+      $division = new Division;
+      $division->name = $request->input('name');
+      $division->description = $request->input('description');
+      $division->save();
 
-      return redirect('/devisions')->with('success', 'Devision Added');
+      return redirect('/divisions')->with('success', 'Division Added');
     }
 
     /**
@@ -67,8 +67,8 @@ class DevisionsController extends Controller
      */
     public function show($id)
     {
-      $devision = Devision::find($id);
-      return view('devisions.show')->with('devision', $devision);
+      $division = Division::find($id);
+      return view('divisions.show')->with('division', $division);
     }
 
     /**
@@ -79,8 +79,8 @@ class DevisionsController extends Controller
      */
     public function edit($id)
     {
-      $devision = Devision::find($id);
-      return view('devisions.edit')->with('devision', $devision);
+      $division = Division::find($id);
+      return view('divisions.edit')->with('division', $division);
     }
 
     /**
@@ -97,13 +97,13 @@ class DevisionsController extends Controller
           'description' => 'required'
       ]);
 
-      // update devision
-      Devision::find($id);
-      $devision->name = $request->input('name');
-      $devision->description = $request->input('description');
-      $devision->save();
+      // update division
+      Division::find($id);
+      $division->name = $request->input('name');
+      $division->description = $request->input('description');
+      $division->save();
 
-      return redirect('/devisions')->with('success', 'Devision Added');
+      return redirect('/divisions')->with('success', 'Division Added');
     }
 
     /**
@@ -114,8 +114,8 @@ class DevisionsController extends Controller
      */
     public function destroy($id)
     {
-      $devision = Devision::find($id);
-      $devision->delete();
-      return redirect('/devisions')->with('success', 'Devision Deleted');
+      $division = Division::find($id);
+      $division->delete();
+      return redirect('/divisions')->with('success', 'Division Deleted');
     }
 }

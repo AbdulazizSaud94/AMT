@@ -11,9 +11,9 @@
 
 
       <br><br>
-    <a href="/laravel/AMT/public/documents/{{$document->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+    <a href="{{$document->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
 
-    <a href="/laravel/AMT/public/documents" class="btn btn-secondary btn-sm">Go Back</a>
+    <a href="./" class="btn btn-secondary btn-sm">Go Back</a>
 
     {!!Form::open(['action' => ['DocumentsController@destroy', $document->id], 'method' => 'POST', 'class' => 'float-right'])!!}
       {{Form::hidden('_method', 'DELETE')}}
