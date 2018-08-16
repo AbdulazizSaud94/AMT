@@ -5,7 +5,7 @@
   @if(count($devisions)>0)
     @foreach ($devisions as $devision)
       <div class="card card-block bg-faded">
-        <h3><a href="/devisions/{{$devision->id}}">{{$devision->name}}</a></h3>
+        <h3><a href="devisions/{{$devision->id}}">{{$devision->name}}</a></h3>
       </div>
     @endforeach
   @else
@@ -13,5 +13,5 @@
   @endif
 
   <br>
-  <a href="/devisions/create" class="btn btn-secondary">Add devision</a>
+  <a href="devisions/create" class="btn btn-secondary">Add devision</a>
 @endsection

@@ -105,7 +105,7 @@
   <hr>
 
 {{-- Selelct client --}}
-  <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="/clients/create" class="btn btn-primary btn-sm ml-3">Add new client</a>
+  <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="clients/create" class="btn btn-primary btn-sm ml-3">Add new client</a>
 <div class="form-group col-md-2">
       <select class="form-control form-control-sm" name="client_id">
         <option selected>Choose...</option>

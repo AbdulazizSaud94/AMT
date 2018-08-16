@@ -20,7 +20,6 @@ class CheckRole
             if($request->user()->hasAnyRole($rolesArr))
                 return $next($request);
         }
-
-        return redirect('/')->with('danger',"You're not authorized to access this page");
+        return back()->withInput()->with('danger',"You're not authorized to access this page");
     }
 }

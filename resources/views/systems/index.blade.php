@@ -5,7 +5,7 @@
   @if(count($systems)>0)
     @foreach ($systems as $system)
       <div class="card card-block bg-faded">
-        <h3><a href="/systems/{{$system->id}}">{{$system->name}}</a></h3>
+        <h3><a href="systems/{{$system->id}}">{{$system->name}}</a></h3>
       </div>
     @endforeach
   @else
@@ -13,5 +13,5 @@
   @endif
 
   <br>
-  <a href="/systems/create" class="btn btn-secondary">Add system</a>
+  <a href="systems/create" class="btn btn-secondary">Add system</a>
 @endsection
