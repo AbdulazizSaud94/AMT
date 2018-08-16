@@ -81,15 +81,13 @@ class User extends Authenticatable
             }
         }
     }
+
     public function addOnlyRoles($roles)
     {
         if (is_array($roles)) {
             $this->roles()->detach();
             $this->addRoles($roles);
         }
-    }
-    public function projects(){
-      return $this->hasMany('App\Project');
     }
 
     public function projects()
