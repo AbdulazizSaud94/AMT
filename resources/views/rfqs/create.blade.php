@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="mt-1">Create RFQ</h1> {!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST '])!!}
-<hr><br>
+<h1 class="mt-1">Create RFQ</h1>
+@include('inc.createProjectModal')
+{!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST '])!!}
+<hr>
+<br>
+
 {{-- Received By radio buttons --}}
   <div class="form-check">
     <label><b>Received By:</b></label>
@@ -69,7 +73,7 @@
 <hr>
 
 {{-- Select project and type --}}
-  <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="/laravel/AMT/public/projects/create" class="btn btn-primary btn-sm ml-3">Add new project</a>
+  <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="#" data-toggle="modal" data-target="#create-project-modal" class="btn btn-primary btn-sm ml-3">Add new project</a>
 <div class="form-group col-md-2">
       <select class="form-control form-control-sm">
         <option selected>Choose...</option>
@@ -101,7 +105,7 @@
   <hr>
 
 {{-- Selelct client --}}
-  <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="/laravel/AMT/public/clients/create" class="btn btn-primary btn-sm ml-3">Add new client</a>
+  <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="/clients/create" class="btn btn-primary btn-sm ml-3">Add new client</a>
 <div class="form-group col-md-2">
       <select class="form-control form-control-sm">
         <option selected>Choose...</option>

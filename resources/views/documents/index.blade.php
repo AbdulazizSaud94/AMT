@@ -5,7 +5,7 @@
   @if(count($documents)>0)
     @foreach ($documents as $document)
       <div class="card card-block bg-faded">
-        <h3><a href="/laravel/AMT/public/documents/{{$document->id}}">{{$document->title}}</a></h3>
+        <h3><a href="/documents/{{$document->id}}">{{$document->title}}</a></h3>
       </div>
     @endforeach
   @else
@@ -13,5 +13,5 @@
   @endif
 
   <br>
-  <a href="/laravel/AMT/public/documents/create" class="btn btn-secondary">Add Document</a>
+  <a href="/documents/create" class="btn btn-secondary">Add Document</a>
 @endsection

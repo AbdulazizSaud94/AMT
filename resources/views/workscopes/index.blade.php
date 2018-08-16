@@ -5,7 +5,7 @@
   @if(count($workscopes)>0)
     @foreach ($workscopes as $workscope)
       <div class="card card-block bg-faded">
-        <h3><a href="/laravel/AMT/public/workscopes/{{$workscope->id}}">{{$workscope->title}}</a></h3>
+        <h3><a href="/workscopes/{{$workscope->id}}">{{$workscope->title}}</a></h3>
       </div>
     @endforeach
   @else
@@ -13,5 +13,5 @@
   @endif
 
   <br>
-  <a href="/laravel/AMT/public/workscopes/create" class="btn btn-secondary">Add Workscope</a>
+  <a href="/workscopes/create" class="btn btn-secondary">Add Workscope</a>
 @endsection

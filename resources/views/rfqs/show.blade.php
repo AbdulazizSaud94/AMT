@@ -12,7 +12,7 @@
       <small>Written on {{$rfq->created_at}}</small>
       <br><br>
 
-    <a href="/laravel/AMT/public/rfqs" class="btn btn-secondary btn-sm">Go Back</a>
+    <a href="/rfqs" class="btn btn-secondary btn-sm">Go Back</a>
 
 
 @endsection

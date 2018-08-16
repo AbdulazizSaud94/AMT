@@ -11,9 +11,9 @@
 
 
       <br><br>
-    <a href="/laravel/AMT/public/devisions/{{$devision->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+    <a href="/devisions/{{$devision->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
 
-    <a href="/laravel/AMT/public/devisions" class="btn btn-secondary btn-sm">Go Back</a>
+    <a href="/devisions" class="btn btn-secondary btn-sm">Go Back</a>
 
     {!!Form::open(['action' => ['DevisionsController@destroy', $devision->id], 'method' => 'POST', 'class' => 'float-right'])!!}
       {{Form::hidden('_method', 'DELETE')}}

@@ -11,9 +11,9 @@
 
 
       <br><br>
-    <a href="/laravel/AMT/public/systems/{{$system->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+    <a href="/systems/{{$system->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
 
-    <a href="/laravel/AMT/public/systems" class="btn btn-secondary btn-sm">Go Back</a>
+    <a href="/systems" class="btn btn-secondary btn-sm">Go Back</a>
 
     {!!Form::open(['action' => ['SystemsController@destroy', $system->id], 'method' => 'POST', 'class' => 'float-right'])!!}
       {{Form::hidden('_method', 'DELETE')}}
