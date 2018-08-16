@@ -20,7 +20,7 @@
                 e.preventDefault();
                 $.ajax({
                     /* the route pointing to the post function */
-                    url: '/createProjectAjax',
+                    url: '../createProjectAjax',
                     type: 'POST',
                     /* send the csrf-token and the input to the controller */
                     data: {_token: CSRF_TOKEN, serial:$('#create-project-form').serializeArray()},
@@ -44,18 +44,7 @@
                         document.body.scrollTop = document.documentElement.scrollTop = 0;
                     }
                 });
-                $.ajax({
-                    /* the route pointing to the post function */
-                    url: '/createProjectAjax',
-                    type: 'get',
-                    /* send the csrf-token and the input to the controller */
-                    data: {_token: CSRF_TOKEN},
-                    dataType: 'JSON',
-                    /* remind that 'data' is the response of the AjaxController */
-                    success: function (data) {
 
-                    }
-                });
             });
         });
     </script>
