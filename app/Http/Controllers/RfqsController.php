@@ -10,17 +10,18 @@ use App\Workscope;
 use App\Project;
 use App\Client;
 use App\Division;
-  //to use Rfq model and eloquent for database
+
+//to use Rfq model and eloquent for database
 // use DB; Basic SQL commands
 
 class RfqsController extends Controller
 {
 
   // Access control using middleware
-  // public function __construct()
-  // {
-  //   $this->middleware('auth');
-  // }
+    // public function __construct()
+    // {
+    //   $this->middleware('auth');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -41,12 +42,12 @@ class RfqsController extends Controller
      */
     public function create()
     {
-      $systems = System::all();
-      $workscopes = Workscope::all();
-      $projects = Project::all();
-      $clients = Client::all();
-      $divisions = Division::all();
-      return view('rfqs.create')->with('workscopes', $workscopes)->with('systems', $systems)->with('projects', $projects)->with('clients', $clients)->with('divisions', $divisions);
+        $systems = System::all();
+        $workscopes = Workscope::all();
+        $projects = Project::all();
+        $clients = Client::all();
+        $divisions = Division::all();
+        return view('rfqs.create')->with('workscopes', $workscopes)->with('systems', $systems)->with('projects', $projects)->with('clients', $clients)->with('divisions', $divisions);
     }
 
     /**
@@ -57,31 +58,38 @@ class RfqsController extends Controller
      */
     public function store(Request $request)
     {
-      // $this->validate($request, [
-      //     'received_by' => 'required',
-      //     'deleviry_place' => 'required',
-      //
-      // ]);
-      $rfq = new Rfq();
-      $systems = $request->input('system');
-      $workscopes = $request->input('workscope');
-      $rfq->user_id = auth()->user()->id; // add current user id to the project
-      $rfq->client_id = $request->input('client_id');
-      $rfq->receiving_method = $request->input('receiving_method');
-      $rfq->delivery_place = $request->input('delivery_place');
-      $rfq->win_chance = $request->input('win_chance');
-      $rfq->margin = $request->input('margin');
-      $rfq->save();
+        // $this->validate($request, [
+        //     'received_by' => 'required',
+        //     'deleviry_place' => 'required',
+        //
+        // ]);
+        $rfq = new Rfq();
+        $systems = $request->input('system');
+        $workscopes = $request->input('workscope');
+        $divisions = $request->input('division');
+        $rfq->user_id = auth()->user()->id; // add current user id to the created rfq
+        $rfq->client_id = $request->input('client_id');
+        $rfq->project_id = $request->input('project_id');
+        $rfq->project_type = $request->input('project_type');
+        $rfq->receiving_method = $request->input('receiving_method');
+        $rfq->delivery_place = $request->input('delivery_place');
+        $rfq->win_chance = $request->input('win_chance');
+        $rfq->margin = $request->input('margin');
+        $rfq->save();
 
-      foreach ($systems as $system) {
-          $rfq->systems()->attach($system);
-      }
+        foreach ($systems as $system) {
+            $rfq->systems()->attach($system);
+        }
 
-      foreach ($workscopes as $workscope) {
-          $rfq->workscopes()->attach($workscope);
-      }
+        foreach ($workscopes as $workscope) {
+            $rfq->workscopes()->attach($workscope);
+        }
 
-      return redirect('/rfqs')->with('success', 'RFQ Added');
+        foreach ($divisions as $division) {
+            $rfq->divisions()->attach($division);
+        }
+
+        return redirect('/rfqs')->with('success', 'RFQ Added');
     }
 
     /**
@@ -94,7 +102,6 @@ class RfqsController extends Controller
     {
         $rfq = Rfq::find($id);
         return view('rfqs.show')->with('rfq', $rfq);
-
     }
 
     /**
@@ -128,8 +135,8 @@ class RfqsController extends Controller
      */
     public function destroy($id)
     {
-      $rfq = Rfq::find($id);
-      $rfq->delete();
-      return redirect('/rfqs')->with('success', 'RFQ Deleted');
+        $rfq = Rfq::find($id);
+        $rfq->delete();
+        return redirect('/rfqs')->with('success', 'RFQ Deleted');
     }
 }

@@ -5,8 +5,9 @@
   @if(count($rfqs)>0)
     @foreach ($rfqs as $rfq)
       <div class="card card-block bg-faded">
-        <h3><a href="/laravel/AMT/public/rfqs/{{$rfq->id}}">{{$rfq->title}}</a></h3>
-        <small>Written on {{$rfq->created_at}}</small>
+        <h4>RFQ Ref#<a href="/laravel/AMT/public/rfqs/{{$rfq->id}}"> {{$rfq->id}}</a></h4>
+        <b>Status: {{$rfq->status}}</b>
+        <small>Added on: {{$rfq->created_at}}</small>
       </div>
     @endforeach
   @else
