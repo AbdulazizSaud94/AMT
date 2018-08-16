@@ -11,7 +11,7 @@
 
 
       <br><br>
-    <a href="divisions/{{$division->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+    <a href="{{$division->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
 
     <a href="./" class="btn btn-secondary btn-sm">Go Back</a>
 

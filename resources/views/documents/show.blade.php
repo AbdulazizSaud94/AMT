@@ -11,7 +11,7 @@
 
 
       <br><br>
-    <a href="documents/{{$document->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+    <a href="{{$document->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
 
     <a href="./" class="btn btn-secondary btn-sm">Go Back</a>
 

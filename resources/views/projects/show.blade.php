@@ -14,12 +14,11 @@
 
       <br><br>
 
-    {{--if statement to check if the user logged in--}}
-    @if(!Auth::guest())
-    <a href="projects/{{$project->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
-    @endif
 
-    <a href="projects" class="btn btn-secondary btn-sm">Go Back</a>
+    <a href="{{$project->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+
+
+    <a href="./" class="btn btn-secondary btn-sm">Go Back</a>
 
     {{--if statement to check if the user logged in--}}
     @if(!Auth::guest())
