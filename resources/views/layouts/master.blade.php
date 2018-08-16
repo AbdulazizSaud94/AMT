@@ -14,16 +14,16 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $('#create-project-form').submit(function(e){
+            $('#create-project-form').submit(function (e) {
                 e.preventDefault();
                 $.ajax({
                     /* the route pointing to the post function */
                     url: '../createProjectAjax',
                     type: 'POST',
                     /* send the csrf-token and the input to the controller */
-                    data: {_token: CSRF_TOKEN, serial:$('#create-project-form').serializeArray()},
+                    data: {_token: CSRF_TOKEN, serial: $('#create-project-form').serializeArray()},
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) {
@@ -31,11 +31,11 @@
                         var result = $("#ajax-result");
                         result.empty();
                         result.removeClass();
-                        if(status !== null) {
+                        if (status !== null) {
                             result.append(status);
                             result.addClass('alert alert-success');
 
-                        }else{
+                        } else {
                             result.append('Error: the project is not added');
                             result.addClass()
                         }
