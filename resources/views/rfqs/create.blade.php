@@ -143,4 +143,5 @@
 
   {{Form::submit('Submit', ['class' => 'btn btn-secondary btn-lg'])}}
   {!! Form::close() !!}
+>>>>>>> RFQ_Mohannad
 @endsection
