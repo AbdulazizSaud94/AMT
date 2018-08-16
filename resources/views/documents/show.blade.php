@@ -13,7 +13,7 @@
       <br><br>
     <a href="documents/{{$document->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
 
-    <a href="documents" class="btn btn-secondary btn-sm">Go Back</a>
+    <a href="./" class="btn btn-secondary btn-sm">Go Back</a>
 
     {!!Form::open(['action' => ['DocumentsController@destroy', $document->id], 'method' => 'POST', 'class' => 'float-right'])!!}
       {{Form::hidden('_method', 'DELETE')}}
