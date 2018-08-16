@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 
 
@@ -16,10 +16,10 @@
 
     {{--if statement to check if the user logged in--}}
     @if(!Auth::guest())
-    <a href="/laravel/AMT/public/projects/{{$project->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+    <a href="/projects/{{$project->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
     @endif
 
-    <a href="/laravel/AMT/public/projects" class="btn btn-secondary btn-sm">Go Back</a>
+    <a href="/projects" class="btn btn-secondary btn-sm">Go Back</a>
 
     {{--if statement to check if the user logged in--}}
     @if(!Auth::guest())

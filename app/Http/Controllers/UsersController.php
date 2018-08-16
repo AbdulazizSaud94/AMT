@@ -27,7 +27,7 @@ class UsersController extends Controller
     public function edit($id){
         $user = User::find($id);
         $roles = Role::all();
-        return view('users.edit')->with(['user'=>$user,'roles',$roles]);
+        return view('users.edit')->with(['user'=>$user,'roles'=>$roles]);
     }
 
     public function update(Request $request,$id){

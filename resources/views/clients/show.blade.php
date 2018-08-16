@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 
 
@@ -12,9 +12,9 @@
 
 
       <br><br>
-    <a href="/laravel/AMT/public/clients/{{$client->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+    <a href="/clients/{{$client->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
 
-    <a href="/laravel/AMT/public/clients" class="btn btn-secondary btn-sm">Go Back</a>
+    <a href="/clients" class="btn btn-secondary btn-sm">Go Back</a>
 
     {!!Form::open(['action' => ['ClientsController@destroy', $client->id], 'method' => 'POST', 'class' => 'float-right'])!!}
       {{Form::hidden('_method', 'DELETE')}}
