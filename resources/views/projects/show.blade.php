@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 
 
@@ -8,20 +8,17 @@
       <div class="card card-block bg-faded">
         <p>Location: {{$project->location}}</p>
         <p>Type: {{$project->type}}</p>
-
         <p>By: {{$project->user->name}}</p>
-
       </div>
 
 
       <br><br>
 
-    {{--if statement to check if the user logged in--}}
-    @if(!Auth::guest())
-    <a href="/laravel/AMT/public/projects/{{$project->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
-    @endif
-    
-    <a href="/laravel/AMT/public/projects" class="btn btn-secondary btn-sm">Go Back</a>
+
+    <a href="{{$project->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+
+
+    <a href="./" class="btn btn-secondary btn-sm">Go Back</a>
 
     {{--if statement to check if the user logged in--}}
     @if(!Auth::guest())

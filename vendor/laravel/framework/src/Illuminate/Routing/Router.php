@@ -1134,8 +1134,10 @@ class Router implements RegistrarContract, BindingRegistrar
         $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
         // Registration Routes...
-        $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-        $this->post('register', 'Auth\RegisterController@register');
+        $this->get('add-user', 'Auth\RegisterController@showRegistrationForm')->name('register');
+        // This changed by Adnan to turn registration routing to add-user
+        $this->post('add-user', 'Auth\RegisterController@register');
+        // This changed by Adnan to turn registration routing to add-user
 
         // Password Reset Routes...
         $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');

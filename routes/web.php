@@ -35,5 +35,11 @@ Route::resource('divisions', 'DivisionsController');
 
 Route::resource('competitors', 'CompetitorsController');
 
-Route::get('/manageusers','UserControllers@index');
-Route::get('/manageusers', 'UserController@getUsers');
+//Route::get('/manageusers','UserControllers@index');
+//Route::get('/manageusers', 'UserController@getUsers');
+
+Route::delete('/users/delete/{id}', "UsersController@delete");
+Route::resource('users', "UsersController");
+
+//Ajax Routes:
+Route::post('/createProjectAjax','ProjectsController@createProjectAjax');

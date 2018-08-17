@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 <h1 class="mt-1">Create RFQ</h1>
+@include('inc.createProjectModal')
 {!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST '])!!}
-<hr><br>
+<hr>
+<br>
+
 {{-- Received By radio buttons --}}
   <div class="form-check">
     <label><b>Received By:</b></label>
@@ -70,29 +73,7 @@
 <hr>
 
 {{-- Select project and type --}}
-  <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label>
-  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-sm ml-3" data-toggle="modal" data-target="#exampleModal">
-  Add new project
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add a project</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        dtcy
-      </div>
-
-    </div>
-  </div>
-</div>
+  <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="#" data-toggle="modal" data-target="#create-project-modal" class="btn btn-primary btn-sm ml-3">Add new project</a>
 <div class="form-group col-md-2">
       <select class="form-control form-control-sm" name = "project_id">
         <option selected>Choose...</option>
@@ -124,7 +105,7 @@
   <hr>
 
 {{-- Selelct client --}}
-  <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="/laravel/AMT/public/clients/create" class="btn btn-primary btn-sm ml-3">Add new client</a>
+  <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="clients/create" class="btn btn-primary btn-sm ml-3">Add new client</a>
 <div class="form-group col-md-2">
       <select class="form-control form-control-sm" name="client_id">
         <option selected>Choose...</option>

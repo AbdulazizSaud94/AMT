@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
   <h1 class = "mt-5">Edit Workscope</h1>

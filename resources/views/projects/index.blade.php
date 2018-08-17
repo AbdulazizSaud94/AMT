@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
   <h1 class = "mt-5">Projects</h1>
@@ -9,7 +9,7 @@
     {{-- Loop print the title, body, timestam for each post --}}
     @foreach($projects as $project)
       <div class="card card-block bg-faded">
-        <h3><a href="/laravel/AMT/public/projects/{{$project->id}}">{{$project->name}}</a></h3>
+        <h3><a href="projects/{{$project->id}}">{{$project->name}}</a></h3>
         <small>Project type: {{$project->type}}</small>
       </div>
     @endforeach
@@ -19,5 +19,5 @@
   @endif
 
   <br>
-  <a href="/laravel/AMT/public/projects/create" class="btn btn-secondary">Add project</a>
+  <a href="projects/create" class="btn btn-secondary">Add project</a>
 @endsection
