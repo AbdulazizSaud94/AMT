@@ -64,12 +64,12 @@
     <div class="container-fluid">
         @if(Auth::user())
             <div class="row">
-                <div class="col-md-2 no-gutters p-0">
+                <div class="col-md-2 p-0">
                     @include('layouts.sidebar')
                 </div>
                 <div class="col-md-10 p-0">
                     @include('layouts.navbar')
-                    <main class="py-4 p-3">
+                    <main class="py-4 pl-5">
                         @include('layouts.messages')
                         @yield('content')
                     </main>

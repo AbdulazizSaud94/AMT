@@ -1,43 +1,44 @@
-<nav class="col-md-2 d-md-block sidebar">
+<nav class="col-md-2 d-md-block sidebar p-0">
     <div class="sidebar-sticky">
         <ul class="nav flex-column align-items-center justify-content-center">
-            <li class="nav-item">
+            <li class="nav-item mb-4">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <div class="logo">
-                        <img src="http://amt-arabia.com/wp-content/uploads/layerslider/AMT_LayerSlider/AMT_Logo_300x209-300x209.png"
+                        <img src="/AMT/public/images/logow.png"
                              alt="logo"/>
                     </div>
                 </a>
             </li>
             <li class="nav-item">
-                <p class="m-0"> {{ Auth::user()->name  }} </p>
+                <h5 class="m-0 text-light"> {{ Auth::user()->name  }} </h5>
             </li>
             <li class="nav-item">
-                <strong>{{ Auth::user()->title  }}</strong>
+                <p>{{ Auth::user()->title  }}</p>
             </li>
+        </ul>
+        <ul class="nav flex-column align-items-baseline d-block">
             <li class="nav-item">
-                <a class="nav-link active mt-3" href="/AMT/public">
-                    Dashboard <span class="sr-only">(current)</span>
+                <a class="nav-link mt-3" href="/AMT/public">
+                    <i class="material-icons">
+                        dashboard
+                    </i>
+                    Dashboard
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="rfqs">
+                    <i class="material-icons">
+                        assignment
+                    </i>
                     RfQs
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
+                    <i class="material-icons">
+                        description
+                    </i>
                     Cost Sheets
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    Reports
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    Messages
                 </a>
             </li>
         </ul>
