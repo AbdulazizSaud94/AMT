@@ -12,7 +12,8 @@ class DocumentsController extends Controller
   // Access control using middleware exception for show and index
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['index', 'show']]);
+    $this->middleware('auth');
+    $this->middleware('roles:admin;super admin', ['except' => ['index', 'show', 'create', 'store']]);
   }
     /**
      * Display a listing of the resource.
