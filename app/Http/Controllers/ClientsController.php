@@ -125,4 +125,24 @@ class ClientsController extends Controller
       $client->delete();
       return redirect('/clients')->with('success', 'Client Deleted');
     }
+
+    public function createClientAjax(Request $request){
+        $client_name = $request->serial[1]['value'];
+        $client_address = $request->serial[2]['value'];
+        $client_telephone = $request->serial[3]['value'];
+
+        $client = new client;
+        $client->name = $client_name;
+        $client->address = $client_address;
+        $client->telephone = $client_telephone;
+        $client->save();
+        $response = array(
+            'status' => "The client $client_name is successfully added.",
+            'id' => $client->id,
+            'name' => $client_name,
+            'address' => $client_address,
+            'telephone' =>$client_telephone
+        );
+        return response()->json($response);
+    }
 }

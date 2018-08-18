@@ -43,3 +43,4 @@ Route::resource('users', "UsersController");
 
 //Ajax Routes:
 Route::post('/createProjectAjax','ProjectsController@createProjectAjax');
+Route::post('/createClientAjax','ClientsController@createClientAjax');

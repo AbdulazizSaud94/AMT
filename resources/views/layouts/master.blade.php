@@ -16,6 +16,8 @@
     <script type="text/javascript">
         $(document).ready(function(){
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var result = $("#ajax-result");
+            //request to add project
             $('#create-project-form').submit(function(e){
                 e.preventDefault();
                 $.ajax({
@@ -28,13 +30,13 @@
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) {
                         var status = data.status;
-                        var result = $("#ajax-result");
+                        var project_list = $('#project-list');
                         result.empty();
                         result.removeClass();
                         if(status !== null) {
                             result.append(status);
                             result.addClass('alert alert-success');
-
+                            project_list.append("<option value='"+data.id+"'>"+data.name+"</option>");
                         }else{
                             result.append('Error: the project is not added');
                             result.addClass()
@@ -44,7 +46,37 @@
                         document.body.scrollTop = document.documentElement.scrollTop = 0;
                     }
                 });
+            });
 
+            //request to add client
+            $('#create-client-form').submit(function(e){
+                e.preventDefault();
+                $.ajax({
+                    /* the route pointing to the post function */
+                    url: '/createClientAjax',
+                    type: 'POST',
+                    /* send the csrf-token and the input to the controller */
+                    data: {_token: CSRF_TOKEN, serial:$('#create-client-form').serializeArray()},
+                    dataType: 'JSON',
+                    /* remind that 'data' is the response of the AjaxController */
+                    success: function (data) {
+                        var status = data.status;
+                        var client_list = $('#client-list');
+                        result.empty();
+                        result.removeClass();
+                        if(status !== null) {
+                            result.append(status);
+                            result.addClass('alert alert-success');
+                            client_list.append("<option value='"+data.id+"'>"+data.name+"</option>");
+                        }else{
+                            result.append('Error: the project is not added');
+                            result.addClass()
+                        }
+                        $('#create-client-modal').modal('toggle');
+                        $('#create-client-form').trigger("reset");
+                        document.body.scrollTop = document.documentElement.scrollTop = 0;
+                    }
+                });
             });
         });
     </script>
