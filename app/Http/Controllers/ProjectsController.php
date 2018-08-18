@@ -126,22 +126,22 @@ class ProjectsController extends Controller
 
     public function createProjectAjax(Request $request){
         $project_name = $request->serial[1]['value'];
-        $response = array(
-            'status' => "The project $project_name is successfully added.",
-            'name' => $project_name,
-            'location' => $request->serial[2]['value'],
-            'type' => $request->serial[2]['value']
-        );
+        $project_location = $request->serial[2]['value'];
+        $project_type = $request->serial[3]['value'];
+
         $project = new Project;
-        $project->name = $response['name'];
-        $project->location = $response['location'];
-        $project->type = $response['type'];
+        $project->name = $project_name;
+        $project->location = $project_location;
+        $project->type = $project_type;
         $project->user_id = auth()->user()->id; // add current user id to the project
         $project->save();
+        $response = array(
+            'status' => "The project $project_name is successfully added.",
+            'id' => $project->id,
+            'name' => $project_name,
+            'location' => $project_location,
+            'type' =>$project_type
+        );
         return response()->json($response);
-    }
-
-    public function getProjects(){
-        
     }
 }
