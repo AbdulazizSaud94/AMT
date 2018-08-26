@@ -17,6 +17,12 @@ class AddColumnsToRfqsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('project_type');
+            $table->string('approved_by');
+            $table->string('rejected_by');
+            $table->string('justification');
+            $table->string('recommendation');
+
+
         });
     }
 
@@ -31,6 +37,10 @@ class AddColumnsToRfqsTable extends Migration
             $table->dropColumn('title');
             $table->dropColumn('description');
             $table->dropColumn('project_type');
+            $table->dropColumn('approved_by');
+            $table->dropColumn('rejected_by');
+            $table->dropColumn('justification');
+            $table->dropColumn('recommendation');
 
         });
     }
