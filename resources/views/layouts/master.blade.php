@@ -53,7 +53,7 @@
                 e.preventDefault();
                 $.ajax({
                     /* the route pointing to the post function */
-                    url: '/createClientAjax',
+                    url: '../createClientAjax',
                     type: 'POST',
                     /* send the csrf-token and the input to the controller */
                     data: {_token: CSRF_TOKEN, serial:$('#create-client-form').serializeArray()},
