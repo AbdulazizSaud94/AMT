@@ -35,6 +35,13 @@ class RfqsController extends Controller
         return view('rfqs.index')->with('rfqs', $rfqs);
     }
 
+    public function pending()
+    {
+        // $rfqs = Rfq::all();
+        $rfqs = Rfq::where('status', 'pending')->orderBy('created_at', 'desc')->get();
+        return view('rfqs.pending')->with('rfqs', $rfqs);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
