@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/rfqs/pending', 'RfqsController@pending'); // route for the pending function in rfq controller
+
 Route::resource('rfqs', 'RfqsController');
 
 Route::resource('projects', 'ProjectsController');
@@ -34,6 +36,7 @@ Route::resource('workscopes', 'WorkscopesController');
 Route::resource('divisions', 'DivisionsController');
 
 Route::resource('competitors', 'CompetitorsController');
+
 
 //Route::get('/manageusers','UserControllers@index');
 //Route::get('/manageusers', 'UserController@getUsers');

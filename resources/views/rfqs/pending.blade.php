@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-  <h1>Pending RFQs</h1>
+  <h1>RFQs</h1>
   @if(count($rfqs)>0)
     @foreach ($rfqs as $rfq)
       <div class="card card-block bg-faded">
