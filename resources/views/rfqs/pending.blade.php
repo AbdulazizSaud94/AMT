@@ -7,6 +7,7 @@
       <div class="card card-block bg-faded">
         <h4>RFQ Ref#<a href="rfqs/{{$rfq->id}}"> {{$rfq->id}}</a></h4>
         <b>Status: {{$rfq->status}}</b>
+        <b>Created by: {{$rfq->user}}</b>
         <small>Added on: {{$rfq->created_at}}</small>
       </div>
     @endforeach
