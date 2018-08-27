@@ -76,7 +76,7 @@
 {{-- Select project and type --}}
   <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="#" data-toggle="modal" data-target="#create-project-modal" class="btn btn-primary btn-sm ml-3">Add new project</a>
 <div class="form-group col-md-2">
-      <select class="form-control form-control-sm" id="project-list">
+      <select class="form-control form-control-sm" id="project-list" name="project_id">
         <option selected disabled>Choose Project..</option>
         @foreach($projects as $project)
           <option value="{{$project->id}}">{{$project->name}}</option>
@@ -108,7 +108,7 @@
 {{-- Selelct client --}}
   <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="#" data-toggle="modal" data-target="#create-client-modal" class="btn btn-primary btn-sm ml-3">Add new client</a>
 <div class="form-group col-md-2">
-      <select id="client-list" class="form-control form-control-sm">
+      <select id="client-list" class="form-control form-control-sm" name='client_id'>
         <option selected>Choose...</option>
         @foreach($clients as $client)
           <option value="{{$client->id}}">{{$client->name}}</option>
