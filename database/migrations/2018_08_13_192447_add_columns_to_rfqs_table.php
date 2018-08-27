@@ -14,13 +14,13 @@ class AddColumnsToRfqsTable extends Migration
     public function up()
     {
         Schema::table('rfqs', function (Blueprint $table) {
-            $table->string('title');
-            $table->string('description');
-            $table->string('project_type');
-            $table->string('approved_by');
-            $table->string('rejected_by');
-            $table->string('justification');
-            $table->string('recommendation');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->string('project_type')->nullable();
+            $table->string('approved_by')->nullable();
+            $table->string('rejected_by')->nullable();
+            $table->string('justification')->nullable();
+            $table->string('recommendation')->nullable();
 
 
         });

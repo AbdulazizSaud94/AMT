@@ -18,9 +18,14 @@ class Rfq extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function clients()
+    public function client()
     {
         return $this->belongsTo('App\Client');
+    }
+
+    public function project()
+    {
+        return $this->belongsTo('App\Project');
     }
 
     public function systems()
@@ -47,4 +52,10 @@ class Rfq extends Model
     {
         return $this->belongsToMany('App\Competitor', 'rfq_competitor');
     }
+
+    public function approved()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

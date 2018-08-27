@@ -16,9 +16,15 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/about', 'PagesController@about');
 
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/rfqs/pending', 'RfqsController@pending'); // route for the pending function in rfq controller
 
     Route::resource('rfqs', 'RfqsController');
+
+    Route::post('rfqs/approve/{id}', 'RfqsController@approve');
+
+    Route::post('rfqs/reject/{id}', 'RfqsController@reject');
+
+    Route::resource('projects', 'ProjectsController');
 
     Route::resource('projects', 'ProjectsController');
 
@@ -41,4 +47,3 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/createProjectAjax','ProjectsController@createProjectAjax');
     Route::post('/createClientAjax','ClientsController@createClientAjax');
 });
-
