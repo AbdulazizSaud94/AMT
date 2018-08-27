@@ -12,7 +12,7 @@
         {!! Form::open( ['id'=>'reject-rfq-form', 'action' => ['RfqsController@reject', $rfq->id], 'method' => 'POST']) !!}
         <div class="form-group">
             {{Form::label('justification', 'Reject justifications')}}
-            {{Form::textarea('description', '', ['class' => 'form-control', 'placeholder' => 'Write rejection justifications', 'rows' => 2, 'cols' => 40])}}
+            {{Form::textarea('justification', '', ['class' => 'form-control', 'placeholder' => 'Write rejection justifications', 'rows' => 2, 'cols' => 40])}}
         </div>
 
         <div class="form-group">
@@ -22,7 +22,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          {{Form::submit('Confirm', ['class' => 'btn btn-primary'])}}
+          <button type="submit" class="btn btn-primary" form="reject-rfq-form">Confirm</button>
         </div>
         {!! Form::close() !!}
     </div>
