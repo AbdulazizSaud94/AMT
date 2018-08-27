@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="text-center">
-                    <img src="/images/logo.png" alt="AMT Logo" class="img-fluid"/>
+                    <img src="{{url('images/logo.png')}}" alt="AMT Logo" class="img-fluid"/>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">

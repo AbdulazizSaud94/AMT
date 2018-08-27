@@ -8,15 +8,15 @@
       @if(count($rfqs)>0)
         @foreach ($rfqs as $rfq)
           <div class="list-group">
-            <a>
-              <span class="h4">RFQ Ref#<a href="rfqs/{{$rfq->id}}"> {{$rfq->id}}</a></span>
-              @if($rfq->status == 'pending')
-                <span class="h5 alert-warning">{{$rfq->status}}</span>
-              @elseif($rfq->status == 'approved')
-                <span class="h5 alert-success">{{$rfq->status}}</span>
+            <a class="list-group-item list-group-item-action bg-light" href="rfqs/{{$rfq->id}}">
+              <span class="h4">RFQ Ref#:{{$rfq->id}}</span><br>
+              @if($rfq->status == 'Pending')
+                <span class="h5 text-warning">{{$rfq->status}}</span>
+              @elseif($rfq->status == 'Approved')
+                <span class="h5 text-success">{{$rfq->status}}</span>
               @else
-                <span class="h5 alert-danger">{{$rfq->status}}</span>
-              @endif
+                <span class="h5 text-danger">{{$rfq->status}}</span>
+              @endif<br>
               <span class="small">Added on: {{$rfq->created_at}}</span>
             </a>
           </div>

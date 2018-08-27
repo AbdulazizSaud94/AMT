@@ -53,9 +53,6 @@ class Rfq extends Model
         return $this->belongsToMany('App\Competitor', 'rfq_competitor');
     }
 
-    public function approved()
-    {
-        return $this->belongsTo('App\User');
-    }
+    
 
 }
