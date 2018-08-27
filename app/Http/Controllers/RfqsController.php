@@ -155,7 +155,7 @@ class RfqsController extends Controller
       $rfq->approved_by = auth()->user()->id;
       $rfq->status = 'Approved';
       $rfq->save();
-      return redirect('/rfqs')->with('success', 'RFQ Approved');
+      return redirect('/rfqs/pending')->with('success', 'RFQ Approved');
     }
 
     // function to reject an RFQ
@@ -167,6 +167,6 @@ class RfqsController extends Controller
       $rfq->justification = $request->input('justification');
       $rfq->recommendation = $request->input('recommendation');
       $rfq->save();
-      return redirect('/rfqs')->with('success', 'RFQ Rejected');
+      return redirect('/rfqs/pending')->with('success', 'RFQ Rejected');
     }
 }

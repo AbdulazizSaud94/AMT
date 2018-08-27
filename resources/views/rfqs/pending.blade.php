@@ -12,7 +12,7 @@
       </div>
     @endforeach
   @else
-    <p>No available RFQs</p>
+    <p>No pending RFQs</p>
   @endif
     <br>
 @endsection
