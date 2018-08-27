@@ -10,37 +10,35 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'PagesController@index');
-
-Route::get('/about', 'PagesController@about');
-
 Auth::routes();
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/', 'PagesController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/about', 'PagesController@about');
 
-Route::resource('rfqs', 'RfqsController');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('projects', 'ProjectsController');
+    Route::resource('rfqs', 'RfqsController');
 
-Route::resource('clients', 'ClientsController');
+    Route::resource('projects', 'ProjectsController');
 
-Route::resource('documents', 'DocumentsController');
+    Route::resource('clients', 'ClientsController');
 
-Route::resource('systems', 'SystemsController');
+    Route::resource('documents', 'DocumentsController');
 
-Route::resource('workscopes', 'WorkscopesController');
+    Route::resource('systems', 'SystemsController');
 
-Route::resource('divisions', 'DivisionsController');
+    Route::resource('workscopes', 'WorkscopesController');
 
-Route::resource('competitors', 'CompetitorsController');
+    Route::resource('divisions', 'DivisionsController');
 
-//Route::get('/manageusers','UserControllers@index');
-//Route::get('/manageusers', 'UserController@getUsers');
+    Route::resource('competitors', 'CompetitorsController');
 
-Route::delete('/users/delete/{id}', "UsersController@delete");
-Route::resource('users', "UsersController");
+    Route::delete('/users/delete/{id}', "UsersController@delete");
+    Route::resource('users', "UsersController");
 
 //Ajax Routes:
-Route::post('/createProjectAjax','ProjectsController@createProjectAjax');
-Route::post('/createClientAjax','ClientsController@createClientAjax');
+    Route::post('/createProjectAjax','ProjectsController@createProjectAjax');
+    Route::post('/createClientAjax','ClientsController@createClientAjax');
+});
+
