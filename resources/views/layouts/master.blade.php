@@ -86,17 +86,35 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+    <link href="{{ asset('css/custome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body>
-<div id="app">
+<body class="h-100">
+<div id="app" class="h-100">
     @include('layouts.navbar')
+    <div class="container-fluid h-100">
 
-    <main class="py-4">
-        @include('layouts.messages')
-        @yield('content')
-    </main>
+            <div class="row h-100">
+                @if(Auth::user())
+                    <div class="col-md-2 px-1 h-100 border-right bg-white">
+                        @include('layouts.sidebar')
+                    </div>
+                    <div class="col-md-8 p-4">
+                        @include('layouts.messages')
+                        @yield('content')
+                    </div>
+                @else
+                    <div class="col-10 mr-auto ml-auto mt-5">
+                        @yield('content')
+                    </div>
+                @endif
+            </div>
+
+
+
+    </div>
+
 </div>
 </body>
 </html>

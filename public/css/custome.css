@@ -1,0 +1,8 @@
+.sidebar-link:hover{
+    background: rgba(203, 56, 0, 0.31);
+    color: white;
+    cursor: pointer;
+}
+html,body{
+    height: 100%;
+}
