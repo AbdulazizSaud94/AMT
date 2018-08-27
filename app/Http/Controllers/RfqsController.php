@@ -120,7 +120,12 @@ class RfqsController extends Controller
     public function edit($id)
     {
       $rfq = Rfq::find($id);
-      return view('rfqs.edit')->with('rfq', $rfq);
+      $systems = System::all();
+      $workscopes = Workscope::all();
+      $projects = Project::all();
+      $clients = Client::all();
+      $divisions = Division::all();
+      return view('rfqs.edit')->with('rfq', $rfq)->with('workscopes', $workscopes)->with('systems', $systems)->with('projects', $projects)->with('clients', $clients)->with('divisions', $divisions);
     }
 
     /**
