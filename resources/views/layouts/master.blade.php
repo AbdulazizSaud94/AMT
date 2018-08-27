@@ -101,6 +101,17 @@
                     <div class="col-md-10 p-4">
                         @include('layouts.messages')
                         @yield('content')
+                        <div class="card m-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    @yield('header')
+                                </div>
+                                <div class="card-body">
+                                    @yield('body')
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 @else
                     <div class="col-10 mr-auto ml-auto mt-5">
@@ -108,6 +119,6 @@
                     </div>
                 @endif
             </div>
-</div>
+    </div>
 </body>
 </html>
