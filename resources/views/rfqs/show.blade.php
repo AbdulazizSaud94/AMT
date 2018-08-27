@@ -17,7 +17,7 @@
   <div><b>Margin: </b>{{$rfq->margin}} %<br></div>
   <div><b>Project: </b>{{$rfq->project->name}}<br></div>
   <div><b>Project type: </b>{{$rfq->project_type}}<br></div>
-  
+
 </div>
 
 <br>
@@ -29,13 +29,19 @@
 @endif
 
 <br>
+@if (auth()->user()->id == $rfq->user->id)
+<a href="{{$rfq->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
+@endif
+
 <a href="./" class="btn btn-secondary btn-sm">Go Back</a>
+
 @if (auth()->user()->id == $rfq->user->id)
   {!!Form::open(['action' => ['RfqsController@destroy', $rfq->id], 'method' => 'POST', 'class' => 'float-right'])!!}
     {{Form::hidden('_method', 'DELETE')}}
     {{Form::submit('Delete', ['class' => 'btn btn-dark btn-sm'])}}
   {!!Form::close()!!}
 @endif
+
 <br><hr>
 
 {!! Form::open(['action' => ['RfqsController@approve', $rfq->id], 'method' => 'POST']) !!}
