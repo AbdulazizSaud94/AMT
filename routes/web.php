@@ -23,6 +23,8 @@ Route::get('/rfqs/pending', 'RfqsController@pending'); // route for the pending 
 
 Route::resource('rfqs', 'RfqsController');
 
+Route::post('rfqs/{id}', 'RfqsController@approve');
+
 Route::resource('projects', 'ProjectsController');
 
 Route::resource('clients', 'ClientsController');

@@ -119,7 +119,8 @@ class RfqsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $rfq = Rfq::find($id);
+      return view('rfqs.edit')->with('rfq', $rfq);
     }
 
     /**
@@ -145,5 +146,27 @@ class RfqsController extends Controller
         $rfq = Rfq::find($id);
         $rfq->delete();
         return redirect('/rfqs')->with('success', 'RFQ Deleted');
+    }
+
+    // function to approve an RFQ
+    public function approve($id)
+    {
+      $rfq = Rfq::find($id);
+      $rfq->approved_by = auth()->user()->id;
+      $rfq->status = 'Approved';
+      $rfq->save();
+      return redirect('/rfqs')->with('success', 'RFQ Approved');
+    }
+
+    // function to reject an RFQ
+      public function reject(Request $request, $id)
+    {
+      $rfq = Rfq::find($id);
+      $rfq->rejected_by = auth()->user()->id;
+      $rfq->status = 'Rejected';
+      $rfq->justification = $request->input('justification');
+      $rfq->recommendation = $request->input('recommendation');
+      $rfq->save();
+      return redirect('/rfqs')->with('success', 'RFQ Approved');
     }
 }
