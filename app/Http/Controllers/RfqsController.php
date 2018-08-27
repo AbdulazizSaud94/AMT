@@ -167,6 +167,6 @@ class RfqsController extends Controller
       $rfq->justification = $request->input('justification');
       $rfq->recommendation = $request->input('recommendation');
       $rfq->save();
-      return redirect('/rfqs')->with('success', 'RFQ Approved');
+      return redirect('/rfqs')->with('success', 'RFQ Rejected');
     }
 }
