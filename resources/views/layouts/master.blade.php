@@ -92,7 +92,7 @@
 </head>
 <body>
 @include('layouts.navbar')
-<div id="app" class="container-fluid">
+<div id="app" class="container-fluid text-capitalize">
             <div class="row">
                 @if(Auth::user())
                     <div class="col-md-2 px-1 bg-white vh-100 sticky-top border-top-0 border-right">
@@ -101,16 +101,7 @@
                     <div class="col-md-10 p-4">
                         @include('layouts.messages')
                         @yield('content')
-                        <div class="card m-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    @yield('header')
-                                </div>
-                                <div class="card-body">
-                                    @yield('body')
-                                </div>
-                            </div>
-                        </div>
+                        @yield('card')
 
                     </div>
                 @else
