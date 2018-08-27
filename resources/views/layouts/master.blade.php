@@ -90,17 +90,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body class="h-100">
-<div id="app" class="h-100">
-    @include('layouts.navbar')
-    <div class="container-fluid h-100">
-
-            <div class="row h-100">
+<body>
+@include('layouts.navbar')
+<div id="app" class="container-fluid">
+            <div class="row">
                 @if(Auth::user())
-                    <div class="col-md-2 px-1 h-100 border-right bg-white">
+                    <div class="col-md-2 px-1 bg-white vh-100 sticky-top border-top-0 border-right">
                         @include('layouts.sidebar')
                     </div>
-                    <div class="col-md-8 p-4">
+                    <div class="col-md-10 p-4">
                         @include('layouts.messages')
                         @yield('content')
                     </div>
@@ -110,11 +108,6 @@
                     </div>
                 @endif
             </div>
-
-
-
-    </div>
-
 </div>
 </body>
 </html>
