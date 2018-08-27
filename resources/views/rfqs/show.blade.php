@@ -1,18 +1,34 @@
 @extends('layouts.master')
 
 @section('content')
-
 @include('inc.rejectRfqModal')
 
-<h1 class="mt-5">{{$rfq->title}}</h1>
+<h3 class="mt-1">RFQ Ref# {{$rfq->id}}</h3>
 
 <div class="card card-block bg-faded">
-  <p></p>
+  <div><b>Status: </b>{{$rfq->status}}<br></div>
+  <div><b>Added by: </b>{{$rfq->user->name}}<br></div>
+  <div><b>Added on: </b>{{$rfq->created_at}}<br></div>
+  <div><b>Last modified at: </b>{{$rfq->updated_at}}<br></div>
+  <div><b>Received by: </b>{{$rfq->receiving_method}}<br></div>
+  <div><b>Client: </b>{{$rfq->client->name}}<br></div>
+  <div><b>Deleviry place: </b>{{$rfq->delivery_place}}<br></div>
+  <div><b>Win chance: </b>{{$rfq->win_chance}} %<br></div>
+  <div><b>Margin: </b>{{$rfq->margin}} %<br></div>
+  <div><b>Project: </b>{{$rfq->project->name}}<br></div>
+  <div><b>Project type: </b>{{$rfq->project_type}}<br></div>
+  
 </div>
 
-<small>Written on {{$rfq->created_at}}</small>
-<br><br>
+<br>
+@if ($rfq->status == 'Rejected')
+<div class="card card-block bg-faded">
+    <div><b>Justification for rejection:<br></b>{{$rfq->justification}}<br><br></div>
+    <div><b>Recommendation:<br></b>{{$rfq->recommendation}}</div>
+</div>
+@endif
 
+<br>
 <a href="./" class="btn btn-secondary btn-sm">Go Back</a>
 @if (auth()->user()->id == $rfq->user->id)
   {!!Form::open(['action' => ['RfqsController@destroy', $rfq->id], 'method' => 'POST', 'class' => 'float-right'])!!}

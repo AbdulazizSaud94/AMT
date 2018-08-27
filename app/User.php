@@ -84,6 +84,16 @@ class User extends Authenticatable
     }
 
     public function rfqs(){
-      return $this->hasMany('App\Rfq');
+      return $this->hasMany('App\Rfq','id','user_id');
+    }
+
+    public function approves()
+    {
+        return $this->hasMany(Rfq::class, 'approved_by');
+    }
+
+    public function rejects()
+    {
+        return $this->hasMany(Rfq::class, 'rejected_by');
     }
 }
