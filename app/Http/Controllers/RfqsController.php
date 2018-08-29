@@ -35,6 +35,13 @@ class RfqsController extends Controller
         return view('rfqs.index')->with('rfqs', $rfqs);
     }
 
+    public function pending()
+    {
+        // $rfqs = Rfq::all();
+        $rfqs = Rfq::where('status', 'pending')->orderBy('created_at', 'desc')->get();
+        return view('rfqs.pending')->with('rfqs', $rfqs);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -112,7 +119,13 @@ class RfqsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $rfq = Rfq::find($id);
+      $systems = System::all();
+      $workscopes = Workscope::all();
+      $projects = Project::all();
+      $clients = Client::all();
+      $divisions = Division::all();
+      return view('rfqs.edit')->with('rfq', $rfq)->with('workscopes', $workscopes)->with('systems', $systems)->with('projects', $projects)->with('clients', $clients)->with('divisions', $divisions);
     }
 
     /**
@@ -138,5 +151,27 @@ class RfqsController extends Controller
         $rfq = Rfq::find($id);
         $rfq->delete();
         return redirect('/rfqs')->with('success', 'RFQ Deleted');
+    }
+
+    // function to approve an RFQ
+    public function approve($id)
+    {
+      $rfq = Rfq::find($id);
+      $rfq->approved_by = auth()->user()->id;
+      $rfq->status = 'Approved';
+      $rfq->save();
+      return redirect('/rfqs/pending')->with('success', 'RFQ Approved');
+    }
+
+    // function to reject an RFQ
+      public function reject(Request $request, $id)
+    {
+      $rfq = Rfq::find($id);
+      $rfq->rejected_by = auth()->user()->id;
+      $rfq->status = 'Rejected';
+      $rfq->justification = $request->input('justification');
+      $rfq->recommendation = $request->input('recommendation');
+      $rfq->save();
+      return redirect('/rfqs/pending')->with('success', 'RFQ Rejected');
     }
 }

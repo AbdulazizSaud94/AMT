@@ -14,9 +14,15 @@ class AddColumnsToRfqsTable extends Migration
     public function up()
     {
         Schema::table('rfqs', function (Blueprint $table) {
-            $table->string('title');
-            $table->string('description');
-            $table->string('project_type');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->string('project_type')->nullable();
+            $table->string('approved_by')->nullable();
+            $table->string('rejected_by')->nullable();
+            $table->string('justification')->nullable();
+            $table->string('recommendation')->nullable();
+
+
         });
     }
 
@@ -31,6 +37,10 @@ class AddColumnsToRfqsTable extends Migration
             $table->dropColumn('title');
             $table->dropColumn('description');
             $table->dropColumn('project_type');
+            $table->dropColumn('approved_by');
+            $table->dropColumn('rejected_by');
+            $table->dropColumn('justification');
+            $table->dropColumn('recommendation');
 
         });
     }

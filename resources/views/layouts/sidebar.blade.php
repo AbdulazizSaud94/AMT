@@ -44,3 +44,10 @@
         </ul>
     </div>
 </nav>
+        <li class="border-top p-2 sidebar-link" onclick="window.location = '{{url('/')}}' ">Dashboard</li>
+        <li class="border-top p-2 sidebar-link " onclick="window.location = '{{url('rfqs')}}' ">RFQ</li>
+        <li class="border-top p-2 sidebar-link"  onclick="window.location = '{{url('users')}}' ">Users</li>
+        <li class="border-top p-2 sidebar-link " onclick="window.location = '{{url('projects')}}' ">Project</li>
+        <li class="border-top p-2 sidebar-link " onclick="window.location = '{{url('systems')}}' ">System</li>
+        <li class="border-top p-2 sidebar-link " onclick="window.location = '{{url('clients')}}' ">Client</li>
+        <li class="border-top p-2 sidebar-link border-bottom" onclick="window.location = '{{url('divisions')}}' ">Division</li>

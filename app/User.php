@@ -95,8 +95,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Project');
     }
 
-    public function rfqs()
-    {
-        return $this->hasMany('App\Rfq');
+    public function rfqs(){
+      return $this->hasMany('App\Rfq', 'user_id', 'id');
     }
+
 }

@@ -13,6 +13,7 @@ class DivisionsController extends Controller
   public function __construct()
   {
     $this->middleware('auth');
+    $this->middleware('roles:admin;super admin', ['except' => ['index', 'show']]);
   }
 
     /**
