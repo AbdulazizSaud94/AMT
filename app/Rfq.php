@@ -53,6 +53,29 @@ class Rfq extends Model
         return $this->belongsToMany('App\Competitor', 'rfq_competitor');
     }
 
-    
+    public function hasSystem($system){
+        $get_system = $this->systems()->where('name',$system)->first();
+        if($get_system)
+            return true;
+        else
+            return false;
+    }
+
+    public function hasWorkscope($workscope){
+        $get_workscope = $this->workscopes()->where('title',$workscope)->first();
+        if($get_workscope)
+            return true;
+        else
+            return false;
+    }
+
+    public function hasDivision($division){
+        $get_division = $this->divisions()->where('name',$division)->first();
+        if($get_division)
+            return true;
+        else
+            return false;
+    }
+
 
 }

@@ -137,7 +137,21 @@ class RfqsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rfq = Rfq::find($id);
+        $systems = $request->input('system');
+        $workscopes = $request->input('workscope');
+        $divisions = $request->input('division');
+        $rfq->user_id = auth()->user()->id; // add current user id to the created rfq
+        $rfq->client_id = $request->input('client_id');
+        $rfq->project_id = $request->input('project_id');
+        $rfq->project_type = $request->input('project_type');
+        $rfq->receiving_method = $request->input('receiving_method');
+        $rfq->delivery_place = $request->input('delivery_place');
+        $rfq->win_chance = $request->input('win_chance');
+        $rfq->margin = $request->input('margin');
+        $rfq->save();
+
+        return redirect('/rfqs')->with('success', 'RFQ Edited');
     }
 
     /**
