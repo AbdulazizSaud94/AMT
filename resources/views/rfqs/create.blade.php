@@ -35,11 +35,11 @@
       {{-- Systems check boxes --}}
       <div class="form-check">
         <label><b>Systems:</b></label>
-        @foreach($systems as $system)
-          <div class="form-check">
-                <input id="system-{{$system->id}}" class="form-check-input" type="checkbox" name = "system[]" value="{{$system->id}}">
-                <label class="form-check-label" for="system-{{$system->id}}">{{$system->name}}</label>
-        </div>
+          @foreach($systems as $system)
+            <div class="form-check">
+                  <input id="system-{{$system->id}}" class="form-check-input" type="checkbox" name = "system[]" value="{{$system->id}}">
+                  <label class="form-check-label" for="system-{{$system->id}}">{{$system->name}}</label>
+            </div>
         @endforeach
         </div>
 
@@ -60,20 +60,20 @@
             <label><b>Deleviry Place:</b></label>
               <div class="form-check form-check-inline">
 
-                  <input class="form-check-input" type="radio" name="delivery_place" value="FOB">
-                  <label class="form-check-label" for="inlineRadio1">FOB</label>
+                  <input id = "deleviry-FOB" class="form-check-input" type="radio" name="delivery_place" value="FOB">
+                  <label class="form-check-label" for="deleviry-FOB">FOB</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="delivery_place" value="Ex-Warehouse">
-                  <label class="form-check-label" for="inlineRadio2">Ex-Warehouse</label>
+                  <input id = "deleviry-ExW" class="form-check-input" type="radio" name="delivery_place" value="Ex-Warehouse">
+                  <label class="form-check-label" for="deleviry-ExW">Ex-Warehouse</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="delivery_place" value="Client Warehouse">
-                  <label class="form-check-label" for="email">Client Warehouse</label>
+                  <input id = "deleviry-CW" class="form-check-input" type="radio" name="delivery_place" value="Client Warehouse">
+                  <label class="form-check-label" for="deleviry-CW">Client Warehouse</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="delivery_place" value="Job Site">
-                  <label class="form-check-label" for="email">Job Site</label>
+                  <input id = "deleviry-JS" class="form-check-input" type="radio" name="delivery_place" value="Job Site">
+                  <label class="form-check-label" for="deleviry-JS">Job Site</label>
               </div>
         </div>
       <hr>
@@ -93,20 +93,20 @@
       <div class="form-check">
         <label>Project Type:</label>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="project_type" value="Budgetary">
-            <label class="form-check-label" for="inlineRadio1">Budgetary</label>
+            <input id="type-budgetary" class="form-check-input" type="radio" name="project_type" value="Budgetary">
+            <label class="form-check-label" for="type-budgetary">Budgetary</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="project_type" value="Bidding">
-            <label class="form-check-label" for="inlineRadio2">Bidding</label>
+            <input id="type-bidding" class="form-check-input" type="radio" name="project_type" value="Bidding">
+            <label class="form-check-label" for="type-bidding">Bidding</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="project_type" value="On Hand">
-            <label class="form-check-label" for="email">On Hand</label>
+            <input id="type-OH" class="form-check-input" type="radio" name="project_type" value="On Hand">
+            <label class="form-check-label" for="type-OH">On Hand</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="project_type" value="Awarded">
-            <label class="form-check-label" for="email">Awarded</label>
+            <input id="type-awarded" class="form-check-input" type="radio" name="project_type" value="Awarded">
+            <label class="form-check-label" for="type-awarded">Awarded</label>
           </div>
       </div>
         <hr>
@@ -127,8 +127,8 @@
         <label><b>Divisions:</b></label>
         @foreach($divisions as $division)
           <div class="form-check">
-          <input class="form-check-input" type="checkbox" name = 'division[]' value="{{$division->id}}">
-          <label class="form-check-label" for="defaultCheck1">{{$division->name}}</label>
+          <input id="division-{{$division->id}}" class="form-check-input" type="checkbox" name = 'division[]' value="{{$division->id}}">
+          <label class="form-check-label" for="division-{{$division->id}}">{{$division->name}}</label>
           </div>
         @endforeach
         </div>
@@ -146,8 +146,8 @@
         <div class="form-group col-md-2">
           <label for="formControlRange">Margin: <span id='margin'>50</span>%</label>
           <input type="range" name = "margin" class="form-control-range" oninput="document.getElementById('margin').innerHTML = this.value">
-
         </div>
+
         <br>
         {{Form::submit('Submit', ['class' => 'btn btn-secondary'])}}
         {!! Form::close() !!}

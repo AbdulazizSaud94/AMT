@@ -7,7 +7,7 @@
       <span class = "h1">Edit RFQ</h1>
     </div>
     <div class="card-body">
-      {!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST '])!!}
+      {!! Form::open(['action' => ['RfqsController@update', $rfq->id], 'method ' => 'POST '])!!}
 
       <br><br>
 
@@ -84,38 +84,38 @@
             <label><b>Deleviry Place:</b></label>
               <div class="form-check form-check-inline">
                 @if ($rfq->delivery_place == 'FOB')
-                  <input class="form-check-input" type="radio" name="delivery_place" value="FOB" checked>
-                  <label class="form-check-label" for="inlineRadio1">FOB</label>
+                  <input id = "deleviry-FOB" class="form-check-input" type="radio" name="delivery_place" value="FOB" checked>
+                  <label class="form-check-label" for="deleviry-FOB">FOB</label>
                 @else
-                  <input class="form-check-input" type="radio" name="delivery_place" value="FOB">
-                  <label class="form-check-label" for="inlineRadio1">FOB</label>
+                  <input id = "deleviry-FOB" class="form-check-input" type="radio" name="delivery_place" value="FOB">
+                  <label class="form-check-label" for="deleviry-FOB">FOB</label>
                 @endif
               </div>
               <div class="form-check form-check-inline">
                 @if ($rfq->delivery_place == 'Ex-Warehouse')
-                  <input class="form-check-input" type="radio" name="delivery_place" value="Ex-Warehouse" checked>
-                  <label class="form-check-label" for="inlineRadio2">Ex-Warehouse</label>
+                  <input id = "deleviry-ExW" class="form-check-input" type="radio" name="delivery_place" value="Ex-Warehouse" checked>
+                  <label class="form-check-label" for="deleviry-ExW">Ex-Warehouse</label>
                 @else
-                  <input class="form-check-input" type="radio" name="delivery_place" value="Ex-Warehouse">
-                  <label class="form-check-label" for="inlineRadio2">Ex-Warehouse</label>
+                  <input id = "deleviry-ExW" class="form-check-input" type="radio" name="delivery_place" value="Ex-Warehouse">
+                  <label class="form-check-label" for="deleviry-ExW">Ex-Warehouse</label>
                 @endif
               </div>
               <div class="form-check form-check-inline">
                 @if ($rfq->delivery_place == 'Client Warehouse')
-                  <input class="form-check-input" type="radio" name="delivery_place" value="Client Warehouse" checked>
-                  <label class="form-check-label" for="email">Client Warehouse</label>
+                  <input id = "deleviry-CW" class="form-check-input" type="radio" name="delivery_place" value="Client Warehouse" checked>
+                  <label class="form-check-label" for="deleviry-CW">Client Warehouse</label>
                 @else
-                  <input class="form-check-input" type="radio" name="delivery_place" value="Client Warehouse">
-                  <label class="form-check-label" for="email">Client Warehouse</label>
+                  <input id = "deleviry-CW" class="form-check-input" type="radio" name="delivery_place" value="Client Warehouse">
+                  <label class="form-check-label" for="deleviry-CW">Client Warehouse</label>
                 @endif
               </div>
               <div class="form-check form-check-inline">
                 @if ($rfq->delivery_place == 'Job Site')
-                  <input class="form-check-input" type="radio" name="delivery_place" value="Job Site" checked>
-                  <label class="form-check-label" for="email">Job Site</label>
+                  <input id = "deleviry-JS" class="form-check-input" type="radio" name="delivery_place" value="Job Site" checked>
+                  <label class="form-check-label" for="deleviry-JS">Job Site</label>
                 @else
-                  <input class="form-check-input" type="radio" name="delivery_place" value="Job Site">
-                  <label class="form-check-label" for="email">Job Site</label>
+                  <input id = "deleviry-JS" class="form-check-input" type="radio" name="delivery_place" value="Job Site">
+                  <label class="form-check-label" for="deleviry-JS">Job Site</label>
                 @endif
               </div>
         </div>
@@ -137,38 +137,38 @@
         <label>Project Type:</label>
           <div class="form-check form-check-inline">
             @if($rfq->project_type == 'Budgetary')
-              <input class="form-check-input" type="radio" name="project_type" value="Budgetary" checked>
-              <label class="form-check-label" for="inlineRadio1">Budgetary</label>
+              <input id="type-budgetary" class="form-check-input" type="radio" name="project_type" value="Budgetary" checked>
+              <label class="form-check-label" for="type-budgetary">Budgetary</label>
             @else
-              <input class="form-check-input" type="radio" name="project_type" value="Budgetary">
-              <label class="form-check-label" for="inlineRadio1">Budgetary</label>
+              <input id="type-budgetary" class="form-check-input" type="radio" name="project_type" value="Budgetary">
+              <label class="form-check-label" for="type-budgetary">Budgetary</label>
             @endif
           </div>
           <div class="form-check form-check-inline">
             @if($rfq->project_type == 'Bidding')
-              <input class="form-check-input" type="radio" name="project_type" value="Bidding" checked>
-              <label class="form-check-label" for="inlineRadio2">Bidding</label>
+              <input id="type-bidding" class="form-check-input" type="radio" name="project_type" value="Bidding" checked>
+              <label class="form-check-label" for="type-bidding">Bidding</label>
             @else
-              <input class="form-check-input" type="radio" name="project_type" value="Bidding">
-              <label class="form-check-label" for="inlineRadio2">Bidding</label>
+              <input id="type-budgetary" class="form-check-input" type="radio" name="project_type" value="Bidding">
+              <label class="form-check-label" for="type-bidding">Bidding</label>
             @endif
           </div>
           <div class="form-check form-check-inline">
             @if($rfq->project_type == 'On Hand')
-              <input class="form-check-input" type="radio" name="project_type" value="On Hand" checked>
-              <label class="form-check-label" for="email">On Hand</label>
+              <input id="type-OH" class="form-check-input" type="radio" name="project_type" value="On Hand" checked>
+              <label class="form-check-label" for="type-OH">On Hand</label>
             @else
-              <input class="form-check-input" type="radio" name="project_type" value="On Hand">
-              <label class="form-check-label" for="email">On Hand</label>
+              <input id="type-OH" class="form-check-input" type="radio" name="project_type" value="On Hand">
+              <label class="form-check-label" for="type-OH">On Hand</label>
             @endif
           </div>
           <div class="form-check form-check-inline">
             @if($rfq->project_type == 'Awarded')
-              <input class="form-check-input" type="radio" name="project_type" value="Awarded">
-              <label class="form-check-label" for="email">Awarded</label>
+              <input id="type-awarded" class="form-check-input" type="radio" name="project_type" value="Awarded">
+              <label class="form-check-label" for="type-awarded">Awarded</label>
             @else
-              <input class="form-check-input" type="radio" name="project_type" value="Awarded">
-              <label class="form-check-label" for="email">Awarded</label>
+              <input id="type-awarded" class="form-check-input" type="radio" name="project_type" value="Awarded">
+              <label class="form-check-label" for="type-awarded">Awarded</label>
             @endif
           </div>
       </div>
@@ -187,28 +187,28 @@
       <hr>
       {{-- Divisions check boxes --}}
         <div class="form-check">
-        <label><b>Divisions:</b></label>
-        @foreach($divisions as $division)
-          <div class="form-check">
-          <input class="form-check-input" type="checkbox" name = 'division[]' value="{{$division->id}}" @if($rfq->hasDivision($division->name)) checked @endif>
-          <label class="form-check-label" for="defaultCheck1">{{$division->name}}</label>
-          </div>
-        @endforeach
+          <label><b>Divisions:</b></label>
+          @foreach($divisions as $division)
+            <div class="form-check">
+              <input id="division-{{$division->id}}" class="form-check-input" type="checkbox" name = 'division[]' value="{{$division->id}}" @if($rfq->hasDivision($division->name)) checked @endif>
+              <label class="form-check-label" for="division-{{$division->id}}">{{$division->name}}</label>
+              </div>
+            @endforeach
         </div>
       <hr>
 
       {{-- Win_chance range selector --}}
         <div class="form-group col-md-2">
-          <label for="formControlRange">Chance to win:</label>
-          <input type="range" name = "win_chance" class="form-control-range">
+          <label for="formControlRange">Win chance: <span id='win_chance'>{{$rfq->win_chance}}</span>%</label>
+          <input type="range" name = "win_chance" value="{{$rfq->win_chance}}" class="form-control-range" oninput="document.getElementById('win_chance').innerHTML = this.value">
         </div>
 
       <hr>
 
       {{-- Margin range selector --}}
         <div class="form-group col-md-2">
-          <label for="formControlRange">Margin:</label>
-          <input type="range" name = "margin" class="form-control-range">
+          <label for="formControlRange">Margin: <span id='margin'>{{$rfq->margin}}</span>%</label>
+          <input type="range" name = "margin" value="{{$rfq->margin}}" class="form-control-range" oninput="document.getElementById('margin').innerHTML = this.value">
         </div>
         <br>
         {{Form::submit('Submit', ['class' => 'btn btn-secondary'])}}
