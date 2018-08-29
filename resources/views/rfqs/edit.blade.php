@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @include('inc.createProjectModal')
+@include('inc.createClientModal')
 @section('card')
   <div class="card">
     <div class="card-header">
@@ -15,38 +16,38 @@
           <label><b>Received By:</b></label>
             <div class="form-check form-check-inline">
               @if($rfq->receiving_method == 'Email')
-                <input class="form-check-input" type="radio" name="receiving_method" value="Email" checked>
-                <label class="form-check-label" for="inlineRadio1">Email</label>
+                <input id="received-email" class="form-check-input" type="radio" name="receiving_method" value="Email" checked>
+                <label class="form-check-label" for="received-email">Email</label>
               @else
-                <input class="form-check-input" type="radio" name="receiving_method" value="Email">
-                <label class="form-check-label" for="inlineRadio1">Email</label>
+                <input id="received-email" class="form-check-input" type="radio" name="receiving_method" value="Email">
+                <label class="form-check-label" for="received-email">Email</label>
               @endif
             </div>
             <div class="form-check form-check-inline">
               @if($rfq->receiving_method == 'Mail')
-                <input class="form-check-input" type="radio" name="receiving_method" value="Mail" checked>
-                <label class="form-check-label" for="inlineRadio2">Mail</label>
+                <input id="received-mail" class="form-check-input" type="radio" name="receiving_method" value="Mail" checked>
+                <label class="form-check-label" for="received-mail">Mail</label>
               @else
-                <input class="form-check-input" type="radio" name="receiving_method" value="Mail">
-                <label class="form-check-label" for="inlineRadio2">Mail</label>
+                <input id="received-mail" class="form-check-input" type="radio" name="receiving_method" value="Mail">
+                <label class="form-check-label" for="received-mail">Mail</label>
               @endif
             </div>
             <div class="form-check form-check-inline">
               @if($rfq->receiving_method == 'Fax')
-                <input class="form-check-input" type="radio" name="receiving_method" value="Fax" checked>
-                <label class="form-check-label" for="email">Fax</label>
+                <input id="received-fax" class="form-check-input" type="radio" name="receiving_method" value="Fax" checked>
+                <label class="form-check-label" for="received-fax">Fax</label>
               @else
-                <input class="form-check-input" type="radio" name="receiving_method" value="Fax">
-                <label class="form-check-label" for="email">Fax</label>
+                <input id="received-fax" class="form-check-input" type="radio" name="receiving_method" value="Fax">
+                <label class="form-check-label" for="received-fax">Fax</label>
               @endif
             </div>
             <div class="form-check form-check-inline">
               @if($rfq->receiving_method == 'Hand')
-                <input class="form-check-input" type="radio" name="receiving_method" value="Hand" checked>
-                <label class="form-check-label" for="email">Hand</label>
+                <input id="received-hand" class="form-check-input" type="radio" name="receiving_method" value="Hand" checked>
+                <label class="form-check-label" for="received-hand">Hand</label>
               @else
-                <input class="form-check-input" type="radio" name="receiving_method" value="Hand">
-                <label class="form-check-label" for="email">Hand</label>
+                <input id="received-hand" class="form-check-input" type="radio" name="receiving_method" value="Hand">
+                <label class="form-check-label" for="received-hand">Hand</label>
               @endif
             </div>
         </div>
@@ -72,8 +73,8 @@
           <label><b>Scope of work:</b></label>
             @foreach($workscopes as $workscope)
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name = "workscope[]" value="{{$workscope->id}}" @if($rfq->hasWorkscope($workscope->title)) checked @endif>
-                  <label class="form-check-label" for="defaultCheck1">{{$workscope->title}}</label>
+                <input id="workscope-{{$workscope->id}}" class="form-check-input" type="checkbox" name = "workscope[]" value="{{$workscope->id}}" @if($rfq->hasWorkscope($workscope->title)) checked @endif>
+                  <label class="form-check-label" for="workscope-{{$workscope->id}}">{{$workscope->title}}</label>
                 </div>
               @endforeach
         </div>
@@ -120,7 +121,7 @@
         </div>
       <hr>
 
-      {{-- Select project and type --}}
+      {{-- Select project --}}
         <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="#" data-toggle="modal" data-target="#create-project-modal" class="btn btn-primary btn-sm ml-3">Add new project</a>
       <div class="form-group col-md-2">
             <select class="form-control form-control-sm" name = "project_id">
@@ -131,23 +132,44 @@
             </select>
       </div>
 
+      {{-- project type radio buttons --}}
       <div class="form-check">
         <label>Project Type:</label>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="project_type" value="Budgetary">
-            <label class="form-check-label" for="inlineRadio1">Budgetary</label>
+            @if($rfq->project_type == 'Budgetary')
+              <input class="form-check-input" type="radio" name="project_type" value="Budgetary" checked>
+              <label class="form-check-label" for="inlineRadio1">Budgetary</label>
+            @else
+              <input class="form-check-input" type="radio" name="project_type" value="Budgetary">
+              <label class="form-check-label" for="inlineRadio1">Budgetary</label>
+            @endif
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="project_type" value="Bidding">
-            <label class="form-check-label" for="inlineRadio2">Bidding</label>
+            @if($rfq->project_type == 'Bidding')
+              <input class="form-check-input" type="radio" name="project_type" value="Bidding" checked>
+              <label class="form-check-label" for="inlineRadio2">Bidding</label>
+            @else
+              <input class="form-check-input" type="radio" name="project_type" value="Bidding">
+              <label class="form-check-label" for="inlineRadio2">Bidding</label>
+            @endif
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="project_type" value="On Hand">
-            <label class="form-check-label" for="email">On Hand</label>
+            @if($rfq->project_type == 'On Hand')
+              <input class="form-check-input" type="radio" name="project_type" value="On Hand" checked>
+              <label class="form-check-label" for="email">On Hand</label>
+            @else
+              <input class="form-check-input" type="radio" name="project_type" value="On Hand">
+              <label class="form-check-label" for="email">On Hand</label>
+            @endif
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="project_type" value="Awarded">
-            <label class="form-check-label" for="email">Awarded</label>
+            @if($rfq->project_type == 'Awarded')
+              <input class="form-check-input" type="radio" name="project_type" value="Awarded">
+              <label class="form-check-label" for="email">Awarded</label>
+            @else
+              <input class="form-check-input" type="radio" name="project_type" value="Awarded">
+              <label class="form-check-label" for="email">Awarded</label>
+            @endif
           </div>
       </div>
         <hr>

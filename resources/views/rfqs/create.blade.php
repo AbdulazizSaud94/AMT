@@ -1,9 +1,10 @@
 @extends('layouts.master')
 @include('inc.createProjectModal')
+@include('inc.createClientModal')
 @section('card')
   <div class="card">
     <div class="card-header">
-      <span class = "h1">Edit RFQ</h1>
+      <span class = "h1">Add RFQ</h1>
     </div>
     <div class="card-body">
       {!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST '])!!}
@@ -14,20 +15,20 @@
         <div class="form-check">
           <label><b>Received By:</b></label>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="receiving_method" value="Email">
-                <label class="form-check-label" for="inlineRadio1">Email</label>
+              <input id="received-email" class="form-check-input" type="radio" name="receiving_method" value="Email">
+              <label class="form-check-label" for="received-email">Email</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="receiving_method" value="Mail">
-                <label class="form-check-label" for="inlineRadio2">Mail</label>
+              <input id="received-mail" class="form-check-input" type="radio" name="receiving_method" value="Mail">
+              <label class="form-check-label" for="received-mail">Mail</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="receiving_method" value="Fax">
-                <label class="form-check-label" for="email">Fax</label>
+              <input id="received-fax" class="form-check-input" type="radio" name="receiving_method" value="Fax">
+              <label class="form-check-label" for="received-fax">Fax</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="receiving_method" value="Hand">
-                <label class="form-check-label" for="email">Hand</label>
+              <input id="received-hand" class="form-check-input" type="radio" name="receiving_method" value="Hand">
+              <label class="form-check-label" for="received-hand">Hand</label>
             </div>
         </div>
         <hr>
@@ -48,8 +49,8 @@
           <label><b>Scope of work:</b></label>
             @foreach($workscopes as $workscope)
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name = "workscope[]" value="{{$workscope->id}}">
-                  <label class="form-check-label" for="defaultCheck1">{{$workscope->title}}</label>
+                <input id="workscope-{{$workscope->id}}" class="form-check-input" type="checkbox" name = "workscope[]" value="{{$workscope->id}}">
+                  <label class="form-check-label" for="workscope-{{$workscope->id}}">{{$workscope->title}}</label>
                 </div>
               @endforeach
         </div>
@@ -77,7 +78,7 @@
         </div>
       <hr>
 
-      {{-- Select project and type --}}
+      {{-- Select project --}}
         <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="#" data-toggle="modal" data-target="#create-project-modal" class="btn btn-primary btn-sm ml-3">Add new project</a>
       <div class="form-group col-md-2">
             <select class="form-control form-control-sm" name = "project_id">
@@ -88,6 +89,7 @@
             </select>
       </div>
 
+      {{-- project type radio buttons --}}
       <div class="form-check">
         <label>Project Type:</label>
           <div class="form-check form-check-inline">
@@ -134,22 +136,21 @@
 
       {{-- Win_chance range selector --}}
         <div class="form-group col-md-2">
-          <label for="formControlRange">Chance to win:</label>
-          <input type="range" name = "win_chance" class="form-control-range">
+          <label for="formControlRange">Win chance: <span id='win_chance'>50</span>%</label>
+          <input type="range" name = "win_chance" class="form-control-range" oninput="document.getElementById('win_chance').innerHTML = this.value">
         </div>
 
       <hr>
 
       {{-- Margin range selector --}}
         <div class="form-group col-md-2">
-          <label for="formControlRange">Margin:</label>
-          <input type="range" name = "margin" class="form-control-range">
+          <label for="formControlRange">Margin: <span id='margin'>50</span>%</label>
+          <input type="range" name = "margin" class="form-control-range" oninput="document.getElementById('margin').innerHTML = this.value">
+
         </div>
         <br>
         {{Form::submit('Submit', ['class' => 'btn btn-secondary'])}}
         {!! Form::close() !!}
     </div>
   </div>
-
-
 @endsection
