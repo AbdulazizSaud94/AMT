@@ -18,7 +18,7 @@
         </ul>
         <ul class="nav flex-column align-items-baseline d-block">
             <li class="nav-item">
-                <a class="nav-link mt-3" href="/AMT/public">
+                <a class="nav-link mt-3" href="{{url('/')}}">
                     <i class="material-icons">
                         dashboard
                     </i>
@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="rfqs">
+                <a class="nav-link" href="{{url('rfqs')}}">
                     <i class="material-icons">
                         assignment
                     </i>
@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="users">
+                <a class="nav-link" href="{{url('users')}}">
                     <i class="material-icons">
                         contacts
                     </i>
@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="projects">
+                <a class="nav-link" href="{{url('projects')}}">
                     <i class="material-icons">
                         work
                     </i>
@@ -50,7 +50,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="systems">
+                <a class="nav-link" href="{{url('systems')}}">
                     <i class="material-icons">
                         computer
                     </i>
@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="clients">
+                <a class="nav-link" href="{{url('clients')}}">
                     <i class="material-icons">
                         group
                     </i>
@@ -66,7 +66,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="divisions">
+                <a class="nav-link" href="{{url('divisions')}}">
                     <i class="material-icons">
                         category
                     </i>
