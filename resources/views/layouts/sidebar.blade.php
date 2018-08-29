@@ -34,6 +34,46 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="users">
+                    <i class="material-icons">
+                        contacts
+                    </i>
+                    Users
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="projects">
+                    <i class="material-icons">
+                        work
+                    </i>
+                    Projects
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="systems">
+                    <i class="material-icons">
+                        computer
+                    </i>
+                    Systems
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="clients">
+                    <i class="material-icons">
+                        group
+                    </i>
+                    Clients
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="divisions">
+                    <i class="material-icons">
+                        category
+                    </i>
+                    Divisions
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="material-icons">
                         description
@@ -44,10 +84,3 @@
         </ul>
     </div>
 </nav>
-        <li class="border-top p-2 sidebar-link" onclick="window.location = '{{url('/')}}' ">Dashboard</li>
-        <li class="border-top p-2 sidebar-link " onclick="window.location = '{{url('rfqs')}}' ">RFQ</li>
-        <li class="border-top p-2 sidebar-link"  onclick="window.location = '{{url('users')}}' ">Users</li>
-        <li class="border-top p-2 sidebar-link " onclick="window.location = '{{url('projects')}}' ">Project</li>
-        <li class="border-top p-2 sidebar-link " onclick="window.location = '{{url('systems')}}' ">System</li>
-        <li class="border-top p-2 sidebar-link " onclick="window.location = '{{url('clients')}}' ">Client</li>
-        <li class="border-top p-2 sidebar-link border-bottom" onclick="window.location = '{{url('divisions')}}' ">Division</li>
