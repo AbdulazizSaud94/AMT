@@ -134,32 +134,31 @@ class DocumentsController extends Controller
         $document_description  = $request->serial[2]['value'];
         $document_file  = $request->serial[3]['value'];
 
-        // file name with extention
-        $filenameWithExt = $document_file->getClientOriginalName();
-
-        // only file name
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-        // only file extention
-        $extention = $document_file->getClientOriginalExtension();
-
-        // file name to Store
-        $fileNameToStore = $filename.'_'.time().'.'.$extention;
-
-        // upload file
-        $path = $document_file->storeAs('public/files', $fileNameToStore);
-
+        // // file name with extention
+        // $filenameWithExt = $document_file->getClientOriginalName();
+        //
+        // // only file name
+        // $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        //
+        // // only file extention
+        // $extention = $document_file->getClientOriginalExtension();
+        //
+        // // file name to Store
+        // $fileNameToStore = $filename.'_'.time().'.'.$extention;
+        //
+        // // upload file
+        // $path = $document_file->storeAs('public/files', $fileNameToStore);
+        //
         // add new document
-        $document = new Document;
-        $document->title = $document_title;
-        $document->description = $document_description;
-        $document->file = $fileNameToStore;
-        $document->type = $extention;
-        $document->user_id = auth()->user()->id; // add current user id to the document
-        $document->save();
+        // $document = new Document;
+        // $document->title = $document_title;
+        // $document->description = $document_description;
+        // // $document->file = $fileNameToStore;
+        // // $document->type = $extention;
+        // $document->user_id = auth()->user()->id; // add current user id to the document
+        // $document->save();
         $response = array(
             'status' => "The Document $document_title is successfully added.",
-            'id' => $document->id,
             'title' => $document_title,
             'description' => $document_description,
             'file' => $document_file

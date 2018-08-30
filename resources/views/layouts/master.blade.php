@@ -87,25 +87,27 @@
                     url: '../createDocumentAjax',
                     type: 'POST',
                     /* send the csrf-token and the input to the controller */
-                    data: {_token: CSRF_TOKEN, serial:$('#create-document-form').serializeArray()},
+                    data: {_token: CSRF_TOKEN, serial:$('#create-document-form').serializeArray(), file:document.getElementById("myFile");
+},
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) {
-                        var status = data.status;
-                        var document_list = $('#document-list');
-                        result.empty();
-                        result.removeClass();
-                        if(status !== null) {
-                            result.append(status);
-                            result.addClass('alert alert-success');
-                            document_list.append("<option value='"+data.id+"'>"+data.title+"</option>");
-                        }else{
-                            result.append('Error: the document is not added');
-                            result.addClass()
-                        }
-                        $('#create-document-modal').modal('toggle');
-                        $('#create-document-form').trigger("reset");
-                        document.body.scrollTop = document.documentElement.scrollTop = 0;
+                        // var status = data.status;
+                        // var document_list = $('#document-list');
+                        // result.empty();
+                        // result.removeClass();
+                        // if(status !== null) {
+                        //     result.append(status);
+                        //     result.addClass('alert alert-success');
+                        //     document_list.append("<option value='"+data.id+"'>"+data.titl+"</option>");
+                        // }else{
+                        //     result.append('Error: the document is not added');
+                        //     result.addClass()
+                        // }
+                        // $('#create-document-modal').modal('toggle');
+                        // $('#create-document-form').trigger("reset");
+                        // document.body.scrollTop = document.documentElement.scrollTop = 0;
+                        alert(JSON.stringify(data));
                     }
                 });
             });

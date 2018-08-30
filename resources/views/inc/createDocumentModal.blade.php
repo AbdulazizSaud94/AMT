@@ -9,6 +9,7 @@
             </div>
             <div class="modal-body">
                 {!! Form::open( ['id'=>'create-document-form']) !!}
+
                 <div class="form-group">
                   {{Form::label('title', 'document Title')}}
                   {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Enter document title'])}}
@@ -20,7 +21,7 @@
                 </div>
 
                 <div class="form-group">
-                    {{Form::file('file')}}
+                    {{Form::file('file', ['id' => 'myFile'])}}
                 </div>
                 {!! Form::close() !!}
             </div>
