@@ -120,6 +120,12 @@ class RfqsController extends Controller
     public function edit($id)
     {
       $rfq = Rfq::find($id);
+
+      //check for valid user
+      if(auth()->user()->id !== $rfq->user_id){
+        return redirect('/rfqs')->with('error', 'Unathorized page');
+      }
+
       $systems = System::all();
       $workscopes = Workscope::all();
       $projects = Project::all();
