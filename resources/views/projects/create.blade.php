@@ -1,11 +1,12 @@
 @extends('layouts.master')
 
-@section('content')
-
-  <h1 class = "mt-5">Add a project</h1>
-
+@section('card')
+<div class="card">
+  <div class="card-header">
+    <span class = "h1">Add a project</span>
+  </div>
+  <div class="card-body">
   {!! Form::open(['action' => 'ProjectsController@store', 'method' => 'POST']) !!}
-
     <div class="form-group">
       {{Form::label('name', 'Project name')}}
       {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Enter project name'])}}
@@ -20,7 +21,9 @@
       {{Form::label('type', 'Project type')}}
       {{Form::text('type', '', ['class' => 'form-control', 'placeholder' => 'Enter project type'])}}
     </div>
-    {{Form::submit('Submit', ['class' => 'btn btn-secondary btn-lg'])}}
-
+    <a href="./" class="btn btn-secondary float-left">Back</a>
+    {{Form::submit('Submit', ['class' => 'btn btn-primary float-right'])}}
   {!! Form::close() !!}
+  </div>
+</div>
 @endsection
