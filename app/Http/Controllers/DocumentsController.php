@@ -135,19 +135,19 @@ class DocumentsController extends Controller
         $document_file  = $request->serial[3]['value'];
 
         // file name with extention
-        $filenameWithExt = $request->file('file')->getClientOriginalName();
+        $filenameWithExt = $document_file->getClientOriginalName();
 
         // only file name
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
 
         // only file extention
-        $extention = $request->file('file')->getClientOriginalExtension();
+        $extention = $document_file->getClientOriginalExtension();
 
         // file name to Store
         $fileNameToStore = $filename.'_'.time().'.'.$extention;
 
         // upload file
-        $path = $request->file('file')->storeAs('public/files', $fileNameToStore);
+        $path = $document_file->storeAs('public/files', $fileNameToStore);
 
         // add new document
         $document = new Document;
