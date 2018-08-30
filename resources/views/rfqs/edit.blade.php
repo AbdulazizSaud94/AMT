@@ -125,9 +125,8 @@
         <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="#" data-toggle="modal" data-target="#create-project-modal" class="btn btn-primary btn-sm ml-3">Add new project</a>
       <div class="form-group col-md-2">
             <select class="form-control form-control-sm" name = "project_id">
-              <option selected>Choose...</option>
               @foreach($projects as $project)
-                <option value="{{$project->id}}">{{$project->name}}</option>
+                <option value="{{$project->id}}" @if($project->id == $rfq->project_id) selected @endif>{{$project->name}}</option>
               @endforeach
             </select>
       </div>
@@ -211,6 +210,7 @@
           <input type="range" name = "margin" value="{{$rfq->margin}}" class="form-control-range" oninput="document.getElementById('margin').innerHTML = this.value">
         </div>
         <br>
+          {{Form::hidden('_method', 'PUT')}}
         {{Form::submit('Submit', ['class' => 'btn btn-secondary'])}}
         {!! Form::close() !!}
     </div>

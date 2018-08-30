@@ -138,6 +138,11 @@ class RfqsController extends Controller
     public function update(Request $request, $id)
     {
         $rfq = Rfq::find($id);
+
+        $rfq->systems()->detach();
+        $rfq->workscopes()->detach();
+        $rfq->divisions()->detach();
+
         $systems = $request->input('system');
         $workscopes = $request->input('workscope');
         $divisions = $request->input('division');
@@ -150,6 +155,20 @@ class RfqsController extends Controller
         $rfq->win_chance = $request->input('win_chance');
         $rfq->margin = $request->input('margin');
         $rfq->save();
+
+
+
+        foreach ($systems as $system) {
+            $rfq->systems()->attach($system);
+        }
+
+        foreach ($workscopes as $workscope) {
+            $rfq->workscopes()->attach($workscope);
+        }
+
+        foreach ($divisions as $division) {
+            $rfq->divisions()->attach($division);
+        }
 
         return redirect('/rfqs')->with('success', 'RFQ Edited');
     }
