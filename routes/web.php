@@ -18,6 +18,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/rfqs/pending', 'RfqsController@pending'); // route for the pending function in rfq controller
 
+    Route::get('/rfqs/rejected', 'RfqsController@rejected');
+
+    Route::get('/rfqs/approved', 'RfqsController@approved');
+
     Route::resource('rfqs', 'RfqsController');
 
     Route::post('rfqs/approve/{id}', 'RfqsController@approve');
@@ -46,4 +50,5 @@ Route::group(['middleware' => ['auth']], function() {
 //Ajax Routes:
     Route::post('/createProjectAjax','ProjectsController@createProjectAjax');
     Route::post('/createClientAjax','ClientsController@createClientAjax');
+    Route::post('/createDocumentAjax','DocumentsController@createDocumentAjax');
 });

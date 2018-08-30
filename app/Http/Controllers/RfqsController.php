@@ -39,7 +39,21 @@ class RfqsController extends Controller
     {
         // $rfqs = Rfq::all();
         $rfqs = Rfq::where('status', 'pending')->orderBy('created_at', 'desc')->get();
-        return view('rfqs.pending')->with('rfqs', $rfqs);
+        return view('rfqs.index')->with('rfqs', $rfqs);
+    }
+
+    public function rejected()
+    {
+        // $rfqs = Rfq::all();
+        $rfqs = Rfq::where('status', 'Rejected')->orderBy('created_at', 'desc')->get();
+        return view('rfqs.index')->with('rfqs', $rfqs);
+    }
+
+    public function approved()
+    {
+        // $rfqs = Rfq::all();
+        $rfqs = Rfq::where('status', 'Approved')->orderBy('created_at', 'desc')->get();
+        return view('rfqs.index')->with('rfqs', $rfqs);
     }
 
     /**

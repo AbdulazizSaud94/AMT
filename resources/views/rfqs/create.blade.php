@@ -1,6 +1,9 @@
 @extends('layouts.master')
+
 @include('inc.createProjectModal')
 @include('inc.createClientModal')
+@include('inc.createDocumentModal')
+
 @section('card')
   <div class="card">
     <div class="card-header">
@@ -81,7 +84,7 @@
       {{-- Select project --}}
         <label class="ml-3"><b>Select project</b></label> <label class="ml-2">or</label> <a href="#" data-toggle="modal" data-target="#create-project-modal" class="btn btn-primary btn-sm ml-3">Add new project</a>
       <div class="form-group col-md-2">
-            <select class="form-control form-control-sm" name = "project_id">
+            <select class="form-control form-control-sm" name = "project_id" id='project-list'>
               <option selected>Choose...</option>
               @foreach($projects as $project)
                 <option value="{{$project->id}}">{{$project->name}}</option>
@@ -112,9 +115,9 @@
         <hr>
 
       {{-- Selelct client --}}
-        <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="clients/create" class="btn btn-primary btn-sm ml-3">Add new client</a>
+        <label class="ml-3"><b>Select client</b></label> <label class="ml-2">or</label> <a href="#" data-toggle="modal" data-target="#create-client-modal" class="btn btn-primary btn-sm ml-3">Add new client</a>
       <div class="form-group col-md-2">
-            <select class="form-control form-control-sm" name="client_id">
+            <select class="form-control form-control-sm" name="client_id" id='client-list'>
               <option selected>Choose...</option>
               @foreach($clients as $client)
                 <option value="{{$client->id}}">{{$client->name}}</option>
@@ -147,8 +150,9 @@
           <label for="formControlRange">Margin: <span id='margin'>50</span>%</label>
           <input type="range" name = "margin" class="form-control-range" oninput="document.getElementById('margin').innerHTML = this.value">
         </div>
-
-        <br>
+        <hr>
+       <a href="#" data-toggle="modal" data-target="#create-document-modal" class="btn btn-primary btn-sm">Add new document</a>
+      <br><br>
         {{Form::submit('Submit', ['class' => 'btn btn-secondary'])}}
         {!! Form::close() !!}
     </div>
