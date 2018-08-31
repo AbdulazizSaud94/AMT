@@ -1,6 +1,10 @@
-.sidebar-link:hover{
-    background: rgba(203, 56, 0, 0.31);
+.sidebar-link{
     color: white;
+}
+
+.sidebar-link:hover{
+    background: rgba(255, 245, 250, 0.31);
+    color: #f9f9f9;
     cursor: pointer;
 }
 
@@ -16,4 +20,7 @@
 .my-checkbox:checked{
     background: cornflowerblue;
     color: white;
+}
+.sidebar-bg{
+    background: url("../images/FiberSideBar.png");
 }
