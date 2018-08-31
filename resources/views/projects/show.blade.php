@@ -1,30 +1,45 @@
 @extends('layouts.master')
+@section('card')
+    <div class="card">
+        <div class="card-header">
+            <span class = "h1">{{$project->name}}</span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-hover table-striped">
+                        <tbody class="table-striped">
+                            <tr>
+                                <th>Location</th>
+                                <td>{{$project->location}}</td>
+                            </tr>
+                            <tr>
+                                <th>Type:</th>
+                                <td>{{$project->type}}</td>
+                            </tr>
+                            <tr>
+                                <th>Created By:</th>
+                                <td>{{$project->user->name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <a href="{{URL('projects')}}" class="btn btn-secondary">Go Back</a>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="{{$project->id}}/edit" class="btn btn-info">Edit</a>
+                    @if(Auth::user()->hasRole('super admin'))
+                        {!!Form::open(['action' => ['ProjectsController@destroy', $project->id], 'method' => 'POST', 'class' => 'd-inline'])!!}
+                        {{Form::hidden('_method', 'DELETE')}}
+                        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                        {!!Form::close()!!}
+                    @endif
+                </div>
+            </div>
 
-
-
-@section('content')
-      <h1 class = "mt-5">{{$project->name}}</h1>
-
-      <div class="card card-block bg-faded">
-        <p>Location: {{$project->location}}</p>
-        <p>Type: {{$project->type}}</p>
-        <p>By: {{$project->user->name}}</p>
-      </div>
-
-
-      <br><br>
-
-
-    <a href="{{$project->id}}/edit" class="btn btn-secondary btn-sm">Edit</a>
-
-
-    <a href="./" class="btn btn-secondary btn-sm">Go Back</a>
-
-    {{--if statement to check if the user logged in--}}
-    @if(!Auth::guest())
-    {!!Form::open(['action' => ['ProjectsController@destroy', $project->id], 'method' => 'POST', 'class' => 'float-right'])!!}
-      {{Form::hidden('_method', 'DELETE')}}
-      {{Form::submit('Delete', ['class' => 'btn btn-dark btn-sm'])}}
-    {!!Form::close()!!}
-    @endif
+        </div>
+    </div>
 @endsection

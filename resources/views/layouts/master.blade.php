@@ -95,7 +95,7 @@
 <div id="app" class="container-fluid text-capitalize">
             <div class="row">
                 @if(Auth::user())
-                    <div class="col-md-2 px-1 bg-white vh-100 sticky-top border-top-0 border-right">
+                    <div class="col-sm-2 px-1 bg-white vh-100 sticky-top border-top-0 border-right d-none d-sm-none d-md-block">
                         @include('layouts.sidebar')
                     </div>
                     <div class="col-md-10 p-4">
