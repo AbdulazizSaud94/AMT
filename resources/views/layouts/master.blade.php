@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -13,6 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -84,25 +84,34 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Styles -->
     <link href="{{ asset('css/custome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
 <body>
-@include('layouts.navbar')
+
 <div id="app" class="container-fluid text-capitalize">
             <div class="row">
                 @if(Auth::user())
-                    <div class="sidebar-bg col-sm-2 px-1 bg-white vh-100 sticky-top border-top-0 border-right d-none d-sm-none d-md-block">
+                    <div class="sidebar-bg col-sm-2 px-1 vh-100 sticky-top d-none d-sm-none d-md-block">
                         @include('layouts.sidebar')
                     </div>
-                    <div class="col-md-10 p-4">
-                        @include('layouts.messages')
-                        @yield('content')
-                        @yield('card')
+                    <div class="col-lg-10 m-0">
+                        <div class="row">
+                            <div class="w-100">
+                                @include('layouts.navbar')
+                            </div>
+                        </div>
 
+                        <div class="row m-2">
+                            @include('layouts.messages')
+                            {{--@yield('content')--}}
+                            <div class="col-12">
+                                @yield('card')
+                            </div>
+                        </div>
                     </div>
                 @else
                     <div class="col-10 mr-auto ml-auto mt-5">
