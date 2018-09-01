@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('content')
-<div class="card m-4">
+@section('card')
+<div class="card">
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -29,7 +29,7 @@
                 @endif
                 <div class="row mt-2">
                     <div class="col-md-6">
-                        <a href="./" class="btn btn-secondary float-md-left">Back</a>
+                        <a href="{{URL('/')}}" class="btn btn-secondary float-md-left">Back</a>
                     </div>
                     <div class="col-md-6">
                         <a href="projects/create" class="btn btn-primary float-md-right">Add project</a>

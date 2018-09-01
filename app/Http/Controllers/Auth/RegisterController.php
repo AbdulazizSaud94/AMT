@@ -56,14 +56,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = new User();
-        $rolesArr = array();
-        $rolesArr['super-admin'] = isset($data['super-admin'])?$data['super-admin']:'none';
-        $rolesArr['admin'] = isset($data['admin'])?$data['admin']:'none';
-        $rolesArr['sales-manger'] = isset($data['sales-manger'])?$data['sales-manger']:'none';
-        $rolesArr['pre-sales-manger'] = isset($data['pre-sales-manger'])?$data['pre-sales-manger']:'none';
-        $rolesArr['sales-engineer'] = isset($data['sales-engineer'])?$data['sales-engineer']:'none';
-        $rolesArr['pre-sales-engineer'] = isset($data['pre-sales-engineer'])?$data['pre-sales-engineer']:'none';
-        $rolesArr['customer'] = isset($data['customer'])?$data['customer']:'none';
 
         $user->name     = $data['name'];
         $user->email    = $data['email'];
@@ -71,12 +63,8 @@ class RegisterController extends Controller
         $user->password = Hash::make($data['password']);
         $user->title    = $data['title'];
         $user->save();
-        $get_role_from_table = "none";
-        foreach ($rolesArr as $role)
-            if($role != 'none'){
-                $get_role_from_table = Role::where('name',$role)->first();
-                $user->roles()->attach($get_role_from_table);
-            }
+        $roles = $data['role'];
+        $user->addRoles($roles);
         return $user;
     }
 }

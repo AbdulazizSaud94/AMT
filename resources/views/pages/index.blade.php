@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="row">
+    <div class="row m-1">
         <div class="col-md-6">
             @include('layouts.cards.topleft')
         </div>
@@ -9,7 +9,7 @@
             @include('layouts.cards.topright')
         </div>
     </div>
-    <div class="row">
+    <div class="row m-1">
         <div class="col-md-6">
             @include('layouts.cards.botleft')
         </div>
