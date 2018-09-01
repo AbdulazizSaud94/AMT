@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
 @section('card')
-  <span class = "h1">Add a System</span>
+
   <div class="card">
     <div class="card-header">
-
+      <span class = "h1">Add a System</span>
     </div>
     <div class="card-body">
       {!! Form::open(['action' => 'SystemsController@store', 'method' => 'POST']) !!}

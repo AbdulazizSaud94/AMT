@@ -100,7 +100,7 @@ class CompetitorsController extends Controller
       ]);
 
       // update system
-      Competitor::find($id);
+      $competitor = Competitor::find($id);
       $competitor->name = $request->input('name');
       $competitor->description = $request->input('description');
       $competitor->save();

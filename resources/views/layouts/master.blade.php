@@ -92,33 +92,32 @@
 </head>
 <body>
 
-<div id="app" class="container-fluid text-capitalize">
-            <div class="row">
-                @if(Auth::user())
-                    <div class="sidebar-bg col-sm-2 px-1 vh-100 sticky-top d-none d-sm-none d-md-block">
-                        @include('layouts.sidebar')
-                    </div>
-                    <div class="col-lg-10 m-0">
-                        <div class="row">
-                            <div class="w-100">
-                                @include('layouts.navbar')
-                            </div>
-                        </div>
-
-                        <div class="row m-2">
-                            @include('layouts.messages')
-                            {{--@yield('content')--}}
-                            <div class="col-12">
-                                @yield('card')
-                            </div>
-                        </div>
-                    </div>
-                @else
-                    <div class="col-10 mr-auto ml-auto mt-5">
-                        @yield('content')
-                    </div>
-                @endif
+<div id='app' class="container-fluid text-capitalize">
+    <div class="row">
+        @if(Auth::user())
+            <div class="sidebar-bg col-md-2 col-lg-2 px-1 vh-100 sticky-top d-none d-sm-none d-md-block">
+                @include('layouts.sidebar')
             </div>
+            <div class="col-lg-10 col-md-10 col-sm-12">
+                <div class="row">
+                    <div class="w-100">
+                        @include('layouts.navbar')
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-12">
+                        @include('layouts.messages')
+                        @yield('content')
+                        @yield('card')
+                    </div>
+                </div>
+            </div>
+        @else
+            <div class="col-10 mr-auto ml-auto mt-5">
+                @yield('content')
+            </div>
+        @endif
     </div>
+</div>
 </body>
 </html>

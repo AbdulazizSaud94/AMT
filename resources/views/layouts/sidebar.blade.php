@@ -15,6 +15,7 @@
         <li class="border-top p-2 sidebar-link " onclick="window.location = '{{URL('/projects')}}'"> <i class="material-icons align-bottom">work</i> Project</li>
         <li class="border-top p-2 sidebar-link " onclick="window.location = '{{URL('/clients')}}'"> <i class="material-icons align-bottom">group</i> Client</li>
         <li class="border-top p-2 sidebar-link " onclick="window.location = '{{URL('/systems')}}'"> <i class="material-icons align-bottom">computer</i> System</li>
+        <li class="border-top p-2 sidebar-link " onclick="window.location = '{{URL('/competitors')}}'"> <i class="material-icons align-bottom">perm_contact_calendar</i> Competitor</li>
         <li class="border-top p-2 sidebar-link border-bottom" onclick="window.location = '{{URL('/divisions')}}'"> <i class="material-icons align-bottom">category</i> Division</li>
     </ul>
 </aside>

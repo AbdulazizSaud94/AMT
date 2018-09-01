@@ -25,6 +25,7 @@
                     </table>
                 </div>
             </div>
+            <hr>
             <div class="row">
                 <div class="col-6">
                     <a href="{{URL('projects')}}" class="btn btn-secondary">Go Back</a>
@@ -43,3 +44,6 @@
         </div>
     </div>
 @endsection
+
+
+

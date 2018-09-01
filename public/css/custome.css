@@ -1,3 +1,8 @@
+.navbar-link:hover{
+    background: rgba(203, 56, 0, 0.2);
+    cursor: pointer;
+}
+
 .sidebar-link{
     color: white;
 }
@@ -23,4 +28,8 @@
 }
 .sidebar-bg{
     background: url("../images/FiberSideBar.png");
+}
+
+.card-body{
+    background: #fafbfc;
 }

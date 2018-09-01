@@ -20,7 +20,7 @@
 
       {{Form::hidden('_method', 'PUT')}}
       <a href="./" class="btn btn-secondary float-left">Back</a>
-      {{Form::submit('Submit', ['class' => 'btn btn-primary float-right])}}
+      {{Form::submit('Submit', ['class' => 'btn btn-primary float-right'])}}
 
       {!! Form::close() !!}
     </div>
