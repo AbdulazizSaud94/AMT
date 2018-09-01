@@ -7,7 +7,7 @@
 @section('card')
   <div class="card">
     <div class="card-header">
-      <span class = "h1">Add RFQ</h1>
+      <span class = "h1">Add RFQ</span>
     </div>
     <div class="card-body">
       {!! Form::open(['action' => 'RfqsController@store', 'method ' => 'POST '])!!}
