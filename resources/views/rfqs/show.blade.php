@@ -45,6 +45,8 @@
 <br><hr>
 
 {!! Form::open(['action' => ['RfqsController@approve', $rfq->id], 'method' => 'POST']) !!}
+
+@if(Auth::user()->hasRole('super admin') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('general manger') || Auth::user()->hasRole('sales manger'))
   {{-- {{Form::hidden('_method', 'PUT')}} --}}
   {{Form::submit('Approve', ['class' => 'btn btn-success btn-sm float-left'])}}
 {!! Form::close() !!}
@@ -53,6 +55,6 @@
 <button type="button" class="btn btn-danger btn-sm float-left" data-toggle="modal" data-target="#reject-rfq-modal">
   Reject
 </button>
-
+@endif
 {{-- <a href="{{action('RfqsController@approve', $rfq->id)}}" class="btn btn-success btn-sm">Approve</a> --}}
 @endsection
