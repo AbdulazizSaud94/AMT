@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                {!! Form::open( ['id'=>'create-document-form']) !!}
+                {!! Form::open( ['id'=>'create-document-form', 'enctype'=>"multipart/form-data",'method'=>'post']) !!}
 
                 <div class="form-group">
                   {{Form::label('title', 'document Title')}}

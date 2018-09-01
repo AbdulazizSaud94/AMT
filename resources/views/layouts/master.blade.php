@@ -16,6 +16,11 @@
     <script type="text/javascript">
         $(document).ready(function(){
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             var result = $("#ajax-result");
             //request to add project
             $('#create-project-form').submit(function(e){
@@ -78,40 +83,24 @@
                     }
                 });
             });
+            // request to add detailed document..
 
             //request to add document
-            $('#create-document-form').submit(function(e){
-                e.preventDefault();
-                $.ajax({
-                    /* the route pointing to the post function */
-                    url: '../createDocumentAjax',
-                    type: 'POST',
-                    /* send the csrf-token and the input to the controller */
-                    data: {_token: CSRF_TOKEN, serial:$('#create-document-form').serializeArray(), file:document.getElementById("myFile");
-},
-                    dataType: 'JSON',
-                    /* remind that 'data' is the response of the AjaxController */
-                    success: function (data) {
-                        // var status = data.status;
-                        // var document_list = $('#document-list');
-                        // result.empty();
-                        // result.removeClass();
-                        // if(status !== null) {
-                        //     result.append(status);
-                        //     result.addClass('alert alert-success');
-                        //     document_list.append("<option value='"+data.id+"'>"+data.titl+"</option>");
-                        // }else{
-                        //     result.append('Error: the document is not added');
-                        //     result.addClass()
-                        // }
-                        // $('#create-document-modal').modal('toggle');
-                        // $('#create-document-form').trigger("reset");
-                        // document.body.scrollTop = document.documentElement.scrollTop = 0;
-                        alert(JSON.stringify(data));
-                    }
-                });
-            });
+            // $('#add-documnet-btn').submit(function(e){
+            //     e.preventDefault();
+            //     alert('test');
+            //     var title_input = "<input class='form-control' type='text' name='title[]'>";
+            //     var description_input = "<input class='form-control' type='text'  name='desc[]'>";
+            //     var file_input = "<input class='form-control' type='file' name='file[]'>";
+            //     $('#document-list').append("<li class='bg-info'>"+ title_input + description_input+ file_input +"</li>");
+            // });
         });
+        function addDocument() {
+            var title_input = "<input class='form-control-sm' type='text' name='title[]' placeholder='title'>";
+            var description_input = "<input class='form-control-sm' type='text'  name='desc[]' placeholder='description'>";
+            var file_input = "<input class='form-control-sm' type='file' name='file[]'>";
+            $('#document-list').append("<li>"+ title_input + description_input+ file_input +"</li>");
+        }
     </script>
 
     <!-- Fonts -->

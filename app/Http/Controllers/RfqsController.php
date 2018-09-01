@@ -10,6 +10,7 @@ use App\Workscope;
 use App\Project;
 use App\Client;
 use App\Division;
+use APP\document;
 
 //to use Rfq model and eloquent for database
 // use DB; Basic SQL commands
@@ -79,11 +80,16 @@ class RfqsController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'received_by' => 'required',
-        //     'deleviry_place' => 'required',
-        //
-        // ]);
+         $this->validate($request, [
+             'delivery_place' => 'required',
+             'division' => 'required',
+             'client_id' => 'required',
+             'project_id' => 'required',
+             'project_type' => 'required',
+             'receiving_method'=>'required',
+             'win_chance'=>'required',
+             'margin'=>'required'
+         ]);
         $rfq = new Rfq();
         $systems = $request->input('system');
         $workscopes = $request->input('workscope');
@@ -110,6 +116,39 @@ class RfqsController extends Controller
             $rfq->divisions()->attach($division);
         }
 
+        // Handle file upload
+//        if ($request->hasFile('file')){
+//
+//            // file name with extention
+//            $this->validate($request, [
+//                'title' => 'required',
+//                'description' => 'required',
+//                'file' => 'required|mimes:pdf,docx,xlsx|max:1999'
+//            ]);
+//            $filenameWithExt = $request->file('file')->getClientOriginalName();
+//
+//            // only file name
+//            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+//
+//            // only file extention
+//            $extention = $request->file('file')->getClientOriginalExtension();
+//
+//            // file name to Store
+//            $fileNameToStore = $filename.'_'.time().'.'.$extention;
+//
+//            // upload file
+//            $path = $request->file('file')->storeAs('public/files', $fileNameToStore);
+//        }
+//        else {
+//            $fileNameToStore = 'nofile.jpg';
+//        }
+//        $document = new Document;
+//        $document->title = $request->input('title');
+//        $document->description = $request->input('description');
+//        $document->file = $fileNameToStore;
+//        $document->type = $extention;
+//        $document->user_id = auth()->user()->id; // add current user id to the document
+//        $document->save();
         return redirect('/rfqs')->with('success', 'RFQ Added');
     }
 
