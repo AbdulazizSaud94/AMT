@@ -1,7 +1,7 @@
 <aside>
 
     <ul class="list-unstyled">
-        <li class="m-2"><img src="./images/logow.png" alt="AMT Logo" class="img-fluid"/></li>
+        <li class="m-2"><img src="{{URL('/images/logow.png')}}" alt="AMT Logo" class="img-fluid"/></li>
 
         <li>
             <ul class="list-unstyled p-2">
